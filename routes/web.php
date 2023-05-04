@@ -64,23 +64,23 @@ Route::get('/usermanager', [UserTypeController::class, 'manage']);
 
 //Prescription
 
-Route::get('/home_prescription', 'PrescriptionController@home2');
+Route::get('/home_prescription', 'App\Http\Controllers\PrescriptionController@home2');
 
 Route::get('/create_prescription', function(){
     return view('create_prescription');
 });
 
-Route::post('/insert_prescription', 'PrescriptionController@add2');
+Route::post('/insert_prescription', 'App\Http\Controllers\PrescriptionController@add2');
 
-Route::get('/update_prescription/{id}', 'PrescriptionController@edit2');
-Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
+Route::get('/update_prescription/{id}', 'App\Http\Controllers\PrescriptionController@edit2');
+Route::get('/edit_prescription/{id}', 'App\Http\Controllers\PrescriptionController@update2');
 
-Route::get('/read_prescription/{id}', 'PrescriptionController@show');
-Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
+Route::get('/read_prescription/{id}', 'App\Http\Controllers\PrescriptionController@show');
+Route::get('/delete_prescription/{id}', 'App\Http\Controllers\PrescriptionController@destroy');
 
 
-Route::get("/report_prescription",'PrescriptionController@reports');
-Route::get("/searchpre",'PrescriptionController@search');
+Route::get("/report_prescription",'App\Http\Controllers\PrescriptionController@reports');
+Route::get("/searchpre",'App\Http\Controllers\PrescriptionController@search');
 
 
 //Treatment
@@ -88,23 +88,23 @@ Route::get("/searchpre",'PrescriptionController@search');
 Route::get('/home_treat', function(){
     return view('home_treat');
 });
-Route::get('/home_treat', 'TreatmentController@index1');
+Route::get('/home_treat', 'App\Http\Controllers\TreatmentController@index1');
 Route::get('/create_treat', function(){
     return view('create_treat');
 });
 
-Route::post('/insert_treatment', 'TreatmentController@add1');
+Route::post('/insert_treatment', 'App\Http\Controllers\TreatmentController@add1');
 
-Route::get('/update_treat/{id}', 'TreatmentController@update1');
-Route::get('/edit_treat/{id}', 'TreatmentController@edit1');
+Route::get('/update_treat/{id}', 'App\Http\Controllers\TreatmentController@update1');
+Route::get('/edit_treat/{id}', 'App\Http\Controllers\TreatmentController@edit1');
 
-Route::get('/read_treat/{id}', 'TreatmentController@show');
-Route::get('/read_treatment/{id}', 'TreatmentController@read');
+Route::get('/read_treat/{id}', 'App\Http\Controllers\TreatmentController@show');
+Route::get('/read_treatment/{id}', 'App\Http\Controllers\TreatmentController@read');
 
-Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
+Route::get('/delete_treat/{id}', 'App\Http\Controllers\TreatmentController@destroy');
 
-Route::get("/report_treat",'TreatmentController@reports');
-Route::get("/searchtreat",'TreatmentController@search');
+Route::get("/report_treat",'App\Http\Controllers\TreatmentController@reports');
+Route::get("/searchtreat",'App\Http\Controllers\TreatmentController@search');
 
 
 // for patients dashboard
@@ -116,22 +116,22 @@ Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
 
-Route::get('/search-product', 'ProductSearchController@index');
+Route::get('/search-product', 'App\Http\Controllers\ProductSearchController@index');
 
-Route::get('/search-product', 'ProductSearchController@index');
-Route::get('/viewproduct/{id}', 'ProductSearchController@show');
+Route::get('/search-product', 'App\Http\Controllers\ProductSearchController@index');
+Route::get('/viewproduct/{id}', 'App\Http\Controllers\ProductSearchController@show');
 Route::get('/productshow','ProductViewController@index');
-Route::post('search-product','ProductSearchController@search');
-Route::get('/order-admindash','ProductAdminDashController@index')->middleware('auth');
-Route::post('order-admindash','ProductAdminDashController@search');
-Route::post('/print_order_row','ProductAdminDashController@print_row');
-Route::post('admindash_status','ProductAdminDashController@updatesatus');
-Route::get('/paitientorderdash','PaitientOrderDashController@indexpaitent')->middleware('auth');
-Route::post('/paitientorderdash/general','PaitientOrderDashController@searchgeneral');
-Route::post('/paitientorderdash/medical','PaitientOrderDashController@searchmedical');
-Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
-Route::post('paitientorderdash/updateorder','PaitientOrderDashController@updates');
-Route::resource('paitintorder','PaitientOrderDashController');
+Route::post('search-product','App\Http\Controllers\ProductSearchController@search');
+Route::get('/order-admindash','App\Http\Controllers\ProductAdminDashController@index')->middleware('auth');
+Route::post('order-admindash','App\Http\Controllers\ProductAdminDashController@search');
+Route::post('/print_order_row','App\Http\Controllers\ProductAdminDashController@print_row');
+Route::post('admindash_status','App\Http\Controllers\ProductAdminDashController@updatesatus');
+Route::get('/paitientorderdash','App\Http\Controllers\PaitientOrderDashController@indexpaitent')->middleware('auth');
+Route::post('/paitientorderdash/general','App\Http\Controllers\PaitientOrderDashController@searchgeneral');
+Route::post('/paitientorderdash/medical','App\Http\Controllers\PaitientOrderDashController@searchmedical');
+Route::post('paitientorderdash/edit','App\Http\Controllers\PaitientOrderDashController@showedit');
+Route::post('paitientorderdash/updateorder','App\Http\Controllers\PaitientOrderDashController@updates');
+Route::resource('paitintorder','App\Http\Controllers\PaitientOrderDashController');
 Route::get('/user-prescriptions','PatientPriscriptionOrderController@show')->middleware('auth');
 Route::post('/user-prescriptions','PatientPriscriptionOrderController@search');
 Route::get('/add-to-cart/{id}',[
@@ -158,26 +158,26 @@ Route::get('go-to-cart','ShoppingCartController@index');
 
 
 //Appointmentadmin
-Route::resource('appointment', 'AppointmentController');
-Route::get('/appointment/create', 'AppointmentController@create');
-Route::post('/appointment/check', 'AppointmentController@check')->name('appointment.check');
-Route::post('/appointment/update', 'AppointmentController@updateTime')->name('update');
+Route::resource('appointment', 'App\Http\Controllers\AppointmentController');
+Route::get('/appointment/create', 'App\Http\Controllers\AppointmentController@create');
+Route::post('/appointment/check', 'App\Http\Controllers\AppointmentController@check')->name('appointment.check');
+Route::post('/appointment/update', 'App\Http\Controllers\AppointmentController@updateTime')->name('update');
 
 
 
 //doctor
-Route::get('/doctor', 'DoctorManagementController@index');
+Route::get('/doctor', 'App\Http\Controllers\DoctorManagementController@index');
   
   
 //VaccineAppointment
-  Route::get('/appointment', 'FrontendController@index');
-  Route::get('/new-appointment/{doctorId}/{date}', 'FrontendController@show')->name('create.appointment');
-  Route::post('/book/appointment', 'FrontendController@store')->name('booking.appointment');
-  Route::get('/my-booking', 'FrontendController@myBookings')->name('my.booking');
+  Route::get('/appointment', 'App\Http\Controllers\FrontendController@index');
+  Route::get('/new-appointment/{doctorId}/{date}', 'App\Http\Controllers\FrontendController@show')->name('create.appointment');
+  Route::post('/book/appointment', 'App\Http\Controllers\FrontendController@store')->name('booking.appointment');
+  Route::get('/my-booking', 'App\Http\Controllers\FrontendController@myBookings')->name('my.booking');
 
   
   
 //patientlist
-Route::get('/patients', 'PatientlistController@index')->name('patient');
-    Route::get('/patients/all', 'PatientlistController@allTimeAppointment')->name('all.appointments');
-    Route::get('/status/update/{id}', 'PatientlistController@toggleStatus')->name('update.status');
+Route::get('/patients', 'App\Http\Controllers\PatientlistController@index')->name('patient');
+    Route::get('/patients/all', 'App\Http\Controllers\PatientlistController@allTimeAppointment')->name('all.appointments');
+    Route::get('/status/update/{id}', 'App\Http\Controllers\PatientlistController@toggleStatus')->name('update.status');

@@ -16,7 +16,7 @@
         Prescription:<p>{{$prescription->description}}</p>
 
     </div>
-    <a href="{{ url('/home_prescription') }}" class="btn btn-primary">Back</a>
+    <a href="{{ '/patient' }}" class="btn btn-primary">Back</a>
 </div>
 
 @endsection
