@@ -11,7 +11,7 @@ class Patient extends Authenticatable
 {
     protected $primaryKey = 'patient_id';
     protected $fillable = [
-        'fullname','gender','dob','nic','address1','address2','city','phone', 'email','username', 'password',
+        'fullname','gender','dob','nin','address1','address2','city','phone', 'email','username', 'password',
     ];
 
     protected $hidden = [

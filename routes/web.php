@@ -178,6 +178,10 @@ Route::get('/doctor', 'App\Http\Controllers\DoctorManagementController@index');
   
   
 //patientlist
+    
 Route::get('/patients', 'App\Http\Controllers\PatientlistController@index')->name('patient');
-    Route::get('/patients/all', 'App\Http\Controllers\PatientlistController@allTimeAppointment')->name('all.appointments');
-    Route::get('/status/update/{id}', 'App\Http\Controllers\PatientlistController@toggleStatus')->name('update.status');
+Route::get('/patients/all', 'App\Http\Controllers\PatientlistController@allTimeAppointment')->name('all.appointments');
+Route::get('/status/update/{id}', 'App\Http\Controllers\PatientlistController@toggleStatus')->name('update.status');
+
+//dashbord
+Route::get('/dashboard/{type}', 'App\Http\Controllers\DashboardController@index')->name('dashboard');

@@ -51,8 +51,8 @@
 
 
                      <div class="form-group form-input">
-                        <input class ="inputa" type="text" name="Nic" id="Nic" value="" required />
-                        <label for="Nic" class="form-label">NIC</label>
+                        <input class ="inputa" type="text" name="NIN" id="NIN" value="" required />
+                        <label for="NIN" class="form-label">NIN</label>
                     </div>
                     <div class="form-group form-input">
                         <input type="text" class ="inputa" name="Address1" id="Address1" value="" required />
@@ -140,7 +140,7 @@
         function myFunction() {
         document.getElementById("name").value = "Vidula";
          document.getElementById("dob").value = "1998-03-18";
-         document.getElementById("Nic").value = "985641722V";
+         document.getElementById("NIN").value = "985641722V";
          document.getElementById("Address1").value = "Daham Mawatha";
          document.getElementById("Address2").value = "Kaldemulla";
          document.getElementById("City").value = "Moratuwa";

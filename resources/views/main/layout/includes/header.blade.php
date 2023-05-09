@@ -17,7 +17,7 @@
         <li class="{{ (Request::is('contact') ? 'active' : '') }}"><a href="/contact2">Contact</a></li>
         <!-- <li><a href="elements.html"><i class="flaticon-020-decay"></i></a></li> -->
         @auth
-        <li class="dashboard-style"><a href="{{'/patient'}}">Dashboard</a></li>
+        <li class="dashboard-style"><a href="{{ route('dashboard', ['type' => Auth::user()->type]) }}">Dashboard</a></li>
         <li class="logout-style"><a class="logout-style" href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}

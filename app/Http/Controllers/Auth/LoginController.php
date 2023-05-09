@@ -23,4 +23,6 @@ class LoginController extends Controller
     {
         return view('main.login');
     }
+
+    
 }

@@ -18,7 +18,7 @@ class CreatePatientsTable extends Migration
             $table->string('fullname');
             $table->string('gender');
             $table->string('dob');
-            $table->string('nic');
+            $table->string('nin');
             $table->string('address1');
             $table->string('address2');
             $table->string('city');

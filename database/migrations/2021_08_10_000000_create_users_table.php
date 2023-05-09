@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
         // adding dummy entries
         DB::table('users')->insert(
             array(
-                'name' => 'Lakshan Perera',
+                'name' => 'Group_8',
                 'email' => 'admin@admin.com',
                 'password'=> bcrypt('admin'),
                 'type' => 'admin',
@@ -67,7 +67,7 @@ class CreateUsersTable extends Migration
         // adding dummy entrie
         DB::table('users')->insert(
             array(
-                'name' => 'Lakshan Perera',
+                'name' => 'Kazibwe Julius',
                 'email' => 'patient@patient.com',
                 'password'=> bcrypt('patient'),
                 'type' => 'patient',
