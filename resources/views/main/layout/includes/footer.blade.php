@@ -7,6 +7,7 @@
                     <div class="fw-about">
                         <a href="" class="site-logo-footer"> <img
                                 src="{{ asset('images/main/mainlayout/logo_light_long.png') }}" alt=""></a>
+<<<<<<< HEAD
                         <p>Jaffna Teaching Hospital Jaffna<br>
 Tel: 021-222-2261<br>
 Fax: 021-222-2262<br>
@@ -19,6 +20,12 @@ E-mail: thjaffna@gmail.com</p>
                             <a href=""><i class="fa fa-behance"></i></a>
                             <a href=""><i class="fa fa-linkedin"></i></a>
                         </div>
+=======
+                        <p>COVID MANAGEMENT AND TRACKING<br>
+Tel: +256-702-932328<br>
+Fax: +256-222-2262<br>
+E-mail: group8gmail.com</p>
+>>>>>>> d2e096ba92402b709345d3957fa86dd6ca946a94
                     </div>
                 </div>
             </div>
@@ -27,12 +34,18 @@ E-mail: thjaffna@gmail.com</p>
                     <div class="fw-links">
                         <h5 class="fw-title">Our Services</h5>
                         <ul>
+<<<<<<< HEAD
                             <li><a href="">Auto-isopathy</a></li>
                             <li><a href="">Clinical Homeopathy</a></li>
                             <li><a href="">Homotoxicology</a></li>
                             <li><a href="">Classical Homeopathy</a></li>
                             <li><a href="">Complex homeopathy</a></li>
                             <li><a href="">Isopathy</a></li>
+=======
+                            <li><a href="">Covid Vaccination</a></li>
+                            <li><a href="">Covid Tracking</a></li>
+                           
+>>>>>>> d2e096ba92402b709345d3957fa86dd6ca946a94
                         </ul>
                     </div>
                 </div>
@@ -45,6 +58,7 @@ E-mail: thjaffna@gmail.com</p>
                             <table>
                                 <tr>
                                     <td>Monday</td>
+<<<<<<< HEAD
                                     <td>8:00am - 12:00pm</td>
                                 </tr>
                                 <tr>
@@ -66,6 +80,28 @@ E-mail: thjaffna@gmail.com</p>
                                 <tr>
                                     <td>Sunday</td>
                                     <td>8:00am - 12:00pm</td>
+=======
+                                    <td>8:00am - 4:00pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td>8:00am - 4:00pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td>8:00am - 4:00pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td>8:00am - 4:00pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td>8:00am - 4:00pm</td>
+                                </tr>
+                                <tr>
+                                
+>>>>>>> d2e096ba92402b709345d3957fa86dd6ca946a94
                                 </tr>
                             </table>
                         </div>

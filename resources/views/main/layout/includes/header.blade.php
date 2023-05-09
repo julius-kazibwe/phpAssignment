@@ -1,8 +1,13 @@
 <div class="container">
+<<<<<<< HEAD
     <!-- Site Logo -->
     <a href="/" class="site-logo">
         <img src="{{ asset('images/main/mainlayout/logo_dark_long.png') }}" alt="">
     </a>
+=======
+    
+
+>>>>>>> d2e096ba92402b709345d3957fa86dd6ca946a94
     <!-- responsive -->
     <div class="nav-switch">
         <i class="fa fa-bars"></i>
@@ -17,7 +22,11 @@
         <li class="{{ (Request::is('contact') ? 'active' : '') }}"><a href="/contact2">Contact</a></li>
         <!-- <li><a href="elements.html"><i class="flaticon-020-decay"></i></a></li> -->
         @auth
+<<<<<<< HEAD
         <li class="dashboard-style"><a href="{{ route('dashboard', ['type' => Auth::user()->type]) }}">Dashboard</a></li>
+=======
+        <li class="dashboard-style"><a href="{{'/patient'}}">Dashboard</a></li>
+>>>>>>> d2e096ba92402b709345d3957fa86dd6ca946a94
         <li class="logout-style"><a class="logout-style" href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}

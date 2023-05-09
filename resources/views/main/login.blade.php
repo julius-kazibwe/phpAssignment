@@ -20,7 +20,11 @@
         </div>
         <div class="col-md-6 col-12 justify-content-center align-self-center">
 
+<<<<<<< HEAD
             <h3 class="header">Welcome back, </h3>
+=======
+            <h3 class="header">Welcome back</h3>
+>>>>>>> d2e096ba92402b709345d3957fa86dd6ca946a94
             <hr>
             <form class="form" action="{{ route('login') }}" method="POST">
                 @csrf
