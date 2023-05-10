@@ -123,13 +123,16 @@ use App\Models\Booking;
             
 			
 			 <div class="widget-content">
-              <div class="shortcuts"> <a href="/home_prescription" class="shortcut"><img src="img/newspaper.png">
-                                             <span class="shortcut-label">Prescriptions</span>
-											  <a href="/home_treat" class="shortcut"><img src="img/newspaper.png">
-                                             <span class="shortcut-label">Treatment Records</span> 
-											 </a><a href="/order-admindash" class="shortcut"><img src="img/adminshopping.png"> <span class="shortcut-label">Orders</span> </a><a href="/patients/all" class="shortcut"><img src="img/newspaper.png"><span
-                                                class="shortcut-label">Booking Records</span> <a href="/appointment/create" class="shortcut"><img src="img/newspaper.png">
-                                             <span class="shortcut-label">Appointments</span> <a href="/doctor" class="shortcut"><img src="img/newspaper.png">
+              <div class="shortcuts"> 
+                <a href="/home_prescription" class="shortcut">
+                  <img src="{{ asset('img/newspaper.png') }}"><span class="shortcut-label">Prescriptions</span>
+									<a href="/home_treat" class="shortcut">
+                          <img src="{{ asset('img/newspaper.png') }}">
+                          <span class="shortcut-label">Treatment Records</span> 
+											  </a>
+                       <a href="/order-admindash" class="shortcut"><img src="{{ asset('img/adminshopping.png')}}"> <span class="shortcut-label">Orders</span> </a><a href="/patients/all" class="shortcut"><img src="{{ asset('img/newspaper.png') }}"><span
+                                                class="shortcut-label">Booking Records</span> <a href="/appointment/create" class="shortcut"><img src="{{ asset('img/newspaper.png') }}">
+                                             <span class="shortcut-label">Appointments</span> <a href="/doctor" class="shortcut"><img src="{{ asset('img/newspaper.png') }}">
                                              <span class="shortcut-label">Doctor Details</span>
 								    </div>
 											 

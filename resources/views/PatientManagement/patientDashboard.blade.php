@@ -100,13 +100,13 @@
                     @csrf
                     <input class="dropdown-item" type="submit" class="dropdown-item" value="Logout">
                   </form>
-                  {{-- <form action="/userdelete/{{ $research->patient_id }}" method="POST">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }} --}}
+                  {{--<form action="/userdelete/{{ $research->patient_id }}" method="POST">
+                    {{ csrf_field() }}--}}
+                    {{ method_field('DELETE') }} 
                     <button type="submit" class="dropdown-item" onclick="deleteConfirmation({{$research->patient_id}})">Delete Account</button>
   
   
-                  {{-- </form> --}}
+                 {{--  </form> --}}
                 </div>
                 
               </li>
@@ -285,7 +285,6 @@
           }
   
           $('.fixed-plugin a').click(function(event) {
-            // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
             if ($(this).hasClass('switch-trigger')) {
               if (event.stopPropagation) {
                 event.stopPropagation();
@@ -454,7 +453,7 @@
     function deleteConfirmation(id) {
         swal({
             title: "Delete?",
-            text: "Please ensure and then confirm!",
+            text: "Please, confirm before you delete!",
             type: "warning",
             showCancelButton: !0,
             confirmButtonText: "Yes, delete it!",

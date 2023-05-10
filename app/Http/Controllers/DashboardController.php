@@ -11,12 +11,15 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller{
     public function index($type)
 {
+    $final=Auth::user();
+
     if ($type == 'admin') {
         // Redirect to the admin dashboard
-        return view('admin.adminpage');
+        $research = DB::table('users')->where('email', $final->email)->first();
+        return view('Doctoradmin.adminpage', compact('research'));
     } else {
         // Redirect to the patient dashboard
-        $final=Auth::user();
+        
         $research = DB::table('patients')->where('email', $final->email)->first();
         return view('PatientManagement.patientDashboard', compact('research'));
     }

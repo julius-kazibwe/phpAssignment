@@ -97,8 +97,8 @@ class PatientDashboardController extends Controller
                             'address1' => 'required|string|max:255',
                             'address2' => 'required|string|max:255',
                             'city' => 'required|string|max:255',
-                            'nic' => 'required|string|min:10|max:12',
-                            'phone' => 'required|integer|min:10',
+                            'nin' => 'required|string|min:14',
+                            'phone' => 'required|string|min:10',
                             'email' => 'required|string|email|min:10',
         ]);
 
@@ -110,7 +110,7 @@ class PatientDashboardController extends Controller
         $curr_patient->address1 = $request->address1;
         $curr_patient->address2 = $request->address2;
         $curr_patient->city = $request->city;
-        $curr_patient->nic = $request->nic;
+        $curr_patient->nin = $request->nin;
         $curr_patient->phone = $request->phone;
         $curr_patient->email = $request->email;
         $auth_user->email = $request->email;
@@ -118,7 +118,7 @@ class PatientDashboardController extends Controller
         $curr_patient->save();
         $auth_user->save();
         
-        return redirect('/patient/'.$id.'/edit')->with('success','ddfdfdfdfdfdfdfdfg Patient details has been updated!');
+        return redirect('/patient/'.$id.'/edit')->with('success',' +++++++++++++++   Your details have been updated!');
     }
 
     /**
@@ -130,9 +130,9 @@ class PatientDashboardController extends Controller
     public function destroy($id)
     {
        
-        // $post = User::find(Auth::id());
+        $post = User::find(Auth::id());
         $post2=Patient::find($id);
-        // $post->delete();
+        $post->delete();
         $post2->delete();
 
         

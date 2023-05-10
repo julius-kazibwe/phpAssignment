@@ -22,10 +22,10 @@
     <thead>
         <tr>
             <th> Name </th>
-            <th> NIC/License </th>
+            <th> NIN/License </th>
 			<th> TYPE </th>
-            <th> Appointments </th>
-            <th> Schedule </th>
+            <th> Schedule</th>
+            <th>  Appointments </th>
             <th> Details </th>
         </tr>
      </thead>
@@ -61,19 +61,7 @@
         </tbody>
         </table>
 
-        <table class="table  .table-striped " id="search_result" style="display:none">
-            <thead>
-            <tr>
-            <th> Name </th>
-            <th> NIC/License </th>
-            <th> Appointments </th>
-            <th> Schedule </th>
-            <th> Details </th>
-            </tr>
-             </thead>
         
-         </tbody>
-        </table>
 @else
     <!--Redirect this page to an appropiate error message -->
     An error ocurred.

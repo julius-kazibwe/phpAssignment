@@ -185,3 +185,5 @@ Route::get('/status/update/{id}', 'App\Http\Controllers\PatientlistController@to
 
 //dashbord
 Route::get('/dashboard/{type}', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+
+Route::delete('/userdelete/{id}', 'App\Http\Controllers\PatientDashboardController@destroy');

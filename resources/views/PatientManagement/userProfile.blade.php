@@ -84,7 +84,7 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true"
+              <a class="nav-link" href="#group_8" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 <i class="material-icons">person</i>
                 <p class="d-lg-none d-md-block">
@@ -182,8 +182,8 @@
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="bmd-label-floating">NIC</label>
-                        <input type="text" name="nic" class="form-control" value="{{$result->nic}}">
+                        <label class="bmd-label-floating">NIN</label>
+                        <input type="text" name="nin" class="form-control" value="{{$result->nin}}">
                       </div>
                     </div>
                     <div class="col-md-4">
