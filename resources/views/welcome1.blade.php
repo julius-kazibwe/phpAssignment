@@ -40,29 +40,30 @@
         <div class="card mt-1">
             <div class="card-header"> Vaccine available today</div>
             <div class="card-body">
-
                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                          
-                            <th scope="col">Name</th>
-                            <th scope="col">Vaccine</th>
+                            <th scope="col">Available Doctor</th>
+                            <th scope="col">From [Time]</th>
+                            <th scope="col">To [Time]</th>
 							<th scope="col">Action</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                    @php
+                        $row_num = 1;
+                    @endphp
                         @forelse($doctors as $doctor )
-
+                        
                         <tr>
-                            <th scope="row">1</th>
-                         
-                            </td>
-                            <td>{{$doctor->doctor->name}}</td>
-                            <td> Astra Zeneca/Oxford</td>
+                            <th scope="row">{{$row_num++}}</th>
+                            <td>{{ $doctor_names[$doctor->doctor_id] }}</td>
+                            <td>{{$doctor->start_time}}</td>
+                            <td>{{$doctor->end_time}}</td>
                             <td>
-                                <a href="{{route('create.appointment',[$doctor->user_id,$doctor->date])}}"> <button class="btn btn-success">Book Appointment</button>
+                                <a href="{{route('create.appointment',[$doctor->doctor_id, $doctor->date])}}"> <button class="btn btn-success">Book Appointment</button>
                             </td>
                         </tr>
                         @empty

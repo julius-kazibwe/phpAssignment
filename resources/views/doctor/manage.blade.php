@@ -37,7 +37,7 @@
 			 <td> {{$d['type']}} </td>
             <td> 
             <!-- redirect the user to the scheduling page for doctors of the schedule controller -->
-                <form method="post" action="/manage/schedule/doctor/{{$d['docotor_id']}}/">
+                <form method="post" action="/manage/schedule/doctor/{{$d['doctor_id']}}">
                 @method('GET')
                     <button type="submit" class="btn btn-primary" style= "background-color: green">Schedule</button>                       
                 </form>

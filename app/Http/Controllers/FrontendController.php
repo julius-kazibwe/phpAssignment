@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\DoctorSchedule;
+use App\Doctor;
 use App\Models\Time;
 use App\Patient;
 use App\Models\Vaccine;
@@ -17,36 +20,50 @@ use Illuminate\Support\Facades\Mail;
 class FrontendController extends Controller
 {
     public function index()
-    {
-        date_default_timezone_set('Australia/Melbourne');
-        if (request('date')) {
-            $doctors = $this->findDoctorsBasedOnDate(request('date'));
-            return view('welcome1', compact('doctors'));
-        }
-
-        $doctors = Appointment::where('date', date('Y-m-d'))->get();
-
-        return view('welcome1', compact('doctors'));
+{
+    date_default_timezone_set('Australia/Melbourne');
+    if (request('date')) {
+        $doctors = $this->findDoctorsBasedOnDate(request('date'));
+    } else {
+        $doctors = DoctorSchedule::where('date', date('Y-m-d'))->get();
     }
+
+    $doctor_names = [];
+    foreach ($doctors as $doctor) {
+        $doctor_id = $doctor->doctor_id;
+        $doctor_name = Doctor::where('doctor_id', $doctor_id)->value('fullname');
+        $doctor_names[$doctor_id] = $doctor_name;
+    }
+
+    return view('welcome1', compact('doctors', 'doctor_names'));
+}
 
     public function show($doctorId, $date)
     {
-        $appointment = Appointment::where('user_id', $doctorId)->where('date', $date)->first();
+        $appointment = DoctorSchedule::where('doctor_id', $doctorId)->where('date', $date)->first();
         $times = Time::where('appointment_id', $appointment->id)->where('status', 0)->get();
-		
-                                                       
-        $user = Patient::where('patient_id', $doctorId)->first();
+	
+                                                   
+        $user = Patient::where('email', auth()->user()->email)->first();
 		
         $doctor_id = $doctorId;
 
         return view('appointment', compact('times', 'date', 'user', 'doctor_id'));
     }
+
+
     public function findDoctorsBasedOnDate($date)
     {
-        $doctors = Appointment::where('date', $date)->get();
+        $doctors = DoctorSchedule::where('date', $date)->get();
         return $doctors;
     }
 
+    /*public function docName($doctor_id){
+        $doctor = Doctor::find($doctor_id);
+        
+        return $doctor->name;
+    }
+*/
     public function store(Request $request)
     {
         date_default_timezone_set('Africa/Tunis');
@@ -68,7 +85,7 @@ class FrontendController extends Controller
         ]);
 
         Time::where('appointment_id', $request->appointmentId)->where('time', $request->time)->update(['status' => 1]);
-        $doctorName = User::where('id', $request->doctorId)->first();
+        $doctorName = Doctor::where('doctor_id', $request->doctorId)->first();
         $mailData = [
             'name' => auth()->user()->name,
             'time' => $request->time,
@@ -96,13 +113,13 @@ class FrontendController extends Controller
 
     public function doctorToday()
     {
-        $doctors = Appointment::with('doctor')->whereDate('date', date('Y-m-d'))->get();
+        $doctors = DoctorSchedule::with('doctor')->whereDate('date', date('Y-m-d'))->get();
         return $doctors;
     }
 
     public function findDoctors(Request $request)
     {
-        $doctors = Appointment::with('doctor')->whereDate('date', $request->date)->get();
+        $doctors = DoctorSchedule::with('doctor')->whereDate('date', $request->date)->get();
         return $doctors;
     }
 

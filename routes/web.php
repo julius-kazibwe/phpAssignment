@@ -187,3 +187,8 @@ Route::get('/status/update/{id}', 'App\Http\Controllers\PatientlistController@to
 Route::get('/dashboard/{type}', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 
 Route::delete('/userdelete/{id}', 'App\Http\Controllers\PatientDashboardController@destroy');
+
+Route::prefix('manage/schedule')->group(function () {
+    Route::get('/doctor/{doctor_id}', 'App\Http\Controllers\ScheduleController@schedule')->name('schedule.doctor');
+    Route::post('/doctor/{doctor_id}', 'App\Http\Controllers\ScheduleController@store')->name('schedule.store');
+});

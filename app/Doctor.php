@@ -15,7 +15,7 @@ class Doctor extends Model
 
     public function visitingdays()
     {
-        return $this->hasMany('App\VisitingDay');
+        return $this->hasMany('App\Models\DoctorSchedule');
     }
 
     // a doctor has many contact numbers
