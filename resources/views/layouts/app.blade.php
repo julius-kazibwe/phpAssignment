@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Jaffna Teaching Hospital</title>
+    <title>Covid Vaccination and tracking</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -30,11 +30,12 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5 ">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                   <img src="{{ asset('images/main/mainlayout/logo_dark_long.png') }} " alt="">
-				   
+ 
+            <a href="{{ route('dashboard', ['type' => Auth::user()->type])}}" class="navbar-brand">
+                <img style="width: 100px;" src="{{ asset('images/main/mainlayout/logo_light.png') }}" alt="">
+            </a>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

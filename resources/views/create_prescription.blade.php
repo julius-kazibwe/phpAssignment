@@ -24,13 +24,13 @@
             @endif
           
             <div class="form-group">
-                <label>Doctor_ID:</label>
+                <label>Pntient_ID:</label>
                 <input type="string" class="form-control" id="did" name="doctor_id" placeholder="Enter Doctor_id">
               </div>
    
            
            <div class="form-group">
-             <label>Patient_ID:</label>
+             <label>Doctor_ID:</label>
              <input type="string" class="form-control" id="pid" name="patient_id" placeholder="Enter Patient_id">
            </div>
 

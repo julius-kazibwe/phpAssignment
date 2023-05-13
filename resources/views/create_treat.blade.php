@@ -14,7 +14,7 @@
        {{ csrf_field() }}
        
          <fieldset>
-           <legend>Treatment Record</legend>
+           <legend>Vaccination Record</legend>
             @if (count($errors)>0)
                 @foreach ($errors->all() as $error)
                   <div class="alert alert-danger">
@@ -39,8 +39,8 @@
            </div>
 
            <div class="form-group">
-             <label>NIC NO</label>
-             <input type="string" class="form-control" id="nic" name="nic" placeholder="Enter NIC No">
+             <label>NIN NO</label>
+             <input type="string" class="form-control" id="nic" name="nic" placeholder="Enter NIN No">
            </div>
 
             <div class="form-group">
@@ -49,7 +49,7 @@
            </div>
 
            <div class="form-group">
-            <label>Note on patient:</label>
+            <label>Vaccine taken:</label>
             <textarea class="form-control" id="Description" name="description" rows="3"></textarea>
            </div>
 

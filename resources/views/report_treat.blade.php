@@ -18,7 +18,7 @@
         </form>
     {{-- pdf start --}}
     <div id="printContainer">
-        <h1>Treatment Record report</h1>
+        <h1>Vaccination Record report</h1>
        
 
 

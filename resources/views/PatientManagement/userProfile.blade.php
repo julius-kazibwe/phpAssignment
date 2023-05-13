@@ -32,26 +32,7 @@
             <p>User Profile</p>
           </a>
         </li>
-        {{-- <li class="nav-item ">
-          <a class="nav-link" href="./tables.html">
-            <i class="material-icons">content_paste</i>
-            <p>Table List</p>
-          </a>
-        </li> --}}
-
-        <li class="nav-item ">
-          <a class="nav-link" href="/contact">
-            <i class="material-icons">location_ons</i>
-            <p>Contact us</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="/feedback">
-            <i class="material-icons">notifications</i>
-            <p>Feedback</p>
-          </a>
-        </li>
-
+        
       </ul>
     </div>
   </div>
@@ -60,7 +41,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
       <div class="container-fluid">
         <div class="navbar-wrapper">
-          <a class="navbar-brand" href="#pablo">User Profile</a>
+          <a class="navbar-brand" href="#group_8">User Profile</a>
         </div>
        
         <div class="collapse navbar-collapse justify-content-end">
@@ -75,7 +56,7 @@
           </form>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#pablo">
+              <a class="nav-link" href="#group_8">
                 <i class="material-icons">dashboard</i>
                 <p class="d-lg-none d-md-block">
                   Stats
@@ -206,7 +187,6 @@
                   <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
                   <div class="clearfix"></div>
                 </form>
-              <button type="submit" class="btn btn-primary pull-right" onclick="reportgenerate()">Generate Report</button>
               </div>
             </div>
           </div>

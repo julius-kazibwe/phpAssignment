@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h1>Treatment Records</h1>
+                            <h1>Vaccination Records</h1>
                         </div>
                         <div class="card-body">
             
@@ -32,9 +32,9 @@
                 <th scope="col">Patient ID</th>
                 <th scope="col">Doctor ID</th>
                 <th scope="col">Fullname</th>
-                <th scope="col">NIC No</th>
+                <th scope="col">NIN No</th>
                 <th scope="col">Date</th>
-                <th scope="col">Description</th>
+                <th scope="col">Vaccine Taken</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>

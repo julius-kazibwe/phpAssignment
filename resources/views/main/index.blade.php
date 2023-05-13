@@ -11,8 +11,8 @@
                     <img src="{{ asset('images/main/mainlayout/icons/map-marker.png') }}" alt="">
                 </div>
                 <div class="hi-content">
-                    <h6>Hospital st,</h6>
-                    <p>Jaffna Sri Lanka</p>
+                    <h6>City Government House</h6>
+                    <p>Kampala, Uganda</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 hi-item">
@@ -29,7 +29,7 @@
                     <img src="{{ asset('images/main/mainlayout/icons/phone.png') }}" alt="">
                 </div>
                 <div class="hi-content">
-                    <h6>+94 76 5544321</h6>
+                    <h6>+256 702932328</h6>
                     <p>Call us now!</p>
                 </div>
             </div>
@@ -83,8 +83,7 @@
         <div class="row">
             <div class="col-lg-7 banner-text text-white">
                 <h4>Register now to make your vaccine appointment.</h4>
-               
-                <a href="/registerp" class="site-btn sb-light">Register</a>
+            
             </div>
             <div class="col-lg-5 text-lg-right">
                
@@ -100,8 +99,8 @@
                 <img src="{{ asset('images/main/index/child.jpg') }}" alt="">
             </div>
             <div class="col-lg-7 about-text">
-                <h2>Getting a COVID-19 Vaccine with Other Vaccines</h2>
-                <p>You can get a COVID-19 vaccine and other vaccines at the same visit. You no longer need to wait 14 days between vaccinations. Experience with other vaccines has shown that the way our bodies develop protection, known as an immune response, after getting vaccinated and possible side effects of vaccines are generally the same when given alone or with other vaccines. Learn more about the timing of other vaccines.</p>
+                <h2>Getting a COVID-19 Vaccine </h2>
+                <p>You can get a COVID-19 vaccine with this system. Booking of appointments has been simplified to avoid time wastage at vaccination centres. This mode of vaccination is the best way to fight the pandemic. Practice the Standard Operating Procedures(SOP's) to avoid catching the virus.</p>
             </div>
         </div>
     </div>

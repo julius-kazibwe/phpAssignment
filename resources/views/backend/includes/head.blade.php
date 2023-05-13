@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
     <div class="container">
         <!-- Navbar content -->
-        <a href="/login" class="navbar-brand">
+        <a href="{{ route('dashboard', ['type' => Auth::user()->type])}}" class="navbar-brand">
             <img style="width: 100px;" src="{{ asset('images/main/mainlayout/logo_light.png') }}" alt="">
         </a>
 
@@ -17,7 +17,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/home_treat')}}">Treatment Record</a>
+                    <a class="nav-link" href="{{url('/home_treat')}}">Vaccination Record</a>
                 </li>
 
                 <li class="nav-item">

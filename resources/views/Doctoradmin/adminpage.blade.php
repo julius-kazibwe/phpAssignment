@@ -95,8 +95,6 @@ use App\Models\Booking;
                   <h6 class="bigstats">Weclome Admin</h6>
                   <div id="big_stats" class="cf">
                     <div class="stat"> <h6>Total Users</h6></i> <span class="value">{{ Patient::count() }}</span> </div>
-                  
-                    <div class="stat"> <h6>Orders</h6></i> <span class="value">{{ Order::count() }}</span> </div>
                     <div class="stat"><h6>Doctors</h6> <span class="value">{{ Doctor::count() }}</span> </div>
                     <div class="stat"><h6>Appointments</h6> <span class="value">{{ Booking::count() }}</span> </div>
              
@@ -124,19 +122,15 @@ use App\Models\Booking;
 			
 			 <div class="widget-content">
               <div class="shortcuts"> 
-                <a href="/home_prescription" class="shortcut">
-                  <img src="{{ asset('img/newspaper.png') }}"><span class="shortcut-label">Prescriptions</span>
-									<a href="/home_treat" class="shortcut">
-                          <img src="{{ asset('img/newspaper.png') }}">
-                          <span class="shortcut-label">Treatment Records</span> 
-											  </a>
-                       <a href="/order-admindash" class="shortcut"><img src="{{ asset('img/adminshopping.png')}}"> <span class="shortcut-label">Orders</span> </a><a href="/patients/all" class="shortcut"><img src="{{ asset('img/newspaper.png') }}"><span
-                                                class="shortcut-label">Booking Records</span> 
-                                                <a href="/appointment/create" class="shortcut"><img src="{{ asset('img/newspaper.png') }}">
-                                             <span class="shortcut-label">Appointments</span> 
-                                             <a href="/doctor" class="shortcut"><img src="{{ asset('img/newspaper.png') }}">
-                                             <span class="shortcut-label">Doctor Details</span>
-								    </div>
+                <a href="/home_prescription" class="shortcut"><img src="{{ asset('img/newspaper.png') }}"><span class="shortcut-label">Prescriptions</span>
+								<a href="/home_treat" class="shortcut">
+                  <img src="{{ asset('img/newspaper.png') }}"><span class="shortcut-label">Treatment Records</span</a>
+                <a href="/patients/all" class="shortcut">
+                  <img src="{{ asset('img/newspaper.png') }}"><span class="shortcut-label">Booking Records</span> 
+                <a href="/appointment/create" class="shortcut">
+                  <img src="{{ asset('img/newspaper.png') }}"><span class="shortcut-label">Appointments</span> 
+                <a href="/doctor" class="shortcut"><img src="{{ asset('img/newspaper.png') }}"><span class="shortcut-label">Doctor Details</span>
+							</div>
 											 
               <!-- /shortcuts --> 
             </div>

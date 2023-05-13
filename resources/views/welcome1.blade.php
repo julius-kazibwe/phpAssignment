@@ -11,7 +11,7 @@
         
         <div class="col-sm-6">
             <h2>BOOK YOUR COVID VACCINE APPOINTMENT!</h2>
-            <p> Choose the date and time of your appointment and receive your confirmation email. It's that simple ! </p>
+            <p> Choose the date and time of your appointment It's that simple ! </p>
           <img src="/images/covid.png" class="img-fluid" style="solid #ccc; height:55%; width:100%;">
         </div>
 
