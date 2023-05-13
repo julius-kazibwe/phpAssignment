@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Mail;
 
 
 
+
 class FrontendController extends Controller
 {
     public function index()
@@ -27,7 +28,6 @@ class FrontendController extends Controller
     } else {
         $doctors = DoctorSchedule::where('date', date('Y-m-d'))->get();
     }
-
     $doctor_names = [];
     foreach ($doctors as $doctor) {
         $doctor_id = $doctor->doctor_id;
@@ -40,15 +40,25 @@ class FrontendController extends Controller
 
     public function show($doctorId, $date)
     {
-        $appointment = DoctorSchedule::where('doctor_id', $doctorId)->where('date', $date)->first();
-        $times = Time::where('appointment_id', $appointment->id)->where('status', 0)->get();
-	
+        $appointment = Appointment::where('doctor_id', $doctorId)->where('date', $date)->first();
+
+        if (isset($appointment)){
+            $times = Time::where('appointment_id', $appointment->id)->where('status', 0)->get();
+
+        }else{
+            // no times available
+            return redirect()->back()->with('notime', 'Sorry, there are no available times for this doctor.');
+
+        }
                                                    
         $user = Patient::where('email', auth()->user()->email)->first();
 		
         $doctor_id = $doctorId;
+        $docName = Doctor::where('doctor_id', $doctor_id)->first();
 
-        return view('appointment', compact('times', 'date', 'user', 'doctor_id'));
+
+
+        return view('appointment', compact('times', 'date', 'user', 'doctor_id', 'docName'));
     }
 
 
@@ -84,17 +94,18 @@ class FrontendController extends Controller
 
         ]);
 
-        Time::where('appointment_id', $request->appointmentId)->where('time', $request->time)->update(['status' => 1]);
-        $doctorName = Doctor::where('doctor_id', $request->doctorId)->first();
-        $mailData = [
+       /*  $doctorName = Doctor::where('doctor_id', $request->doctorId)->first();
+       $mailData = [
             'name' => auth()->user()->name,
             'time' => $request->time,
             'date' => $request->date,
             'doctorName' => $doctorName->name
-        ];
+        ];*/
 
 
-        Mail::to(auth()->user()->email)->send(new AppointmentMail($mailData));
+       // Mail::to(auth()->user()->email)->send(new AppointmentMail($mailData));
+      
+       Time::where('appointment_id', $request->appointmentId)->where('time', $request->time)->update(['status' => 1]);
 
         return redirect()->back()->with('message', 'Your appointment was booked');
     }
@@ -108,7 +119,18 @@ class FrontendController extends Controller
     public function myBookings()
     {
         $appointments = Booking::latest()->where('user_id', auth()->user()->id)->get();
-        return view('booking.index', compact('appointments'));
+        $doctorIds = [];
+     foreach ($appointments as $appointment) {
+    $doctorIds[] = $appointment->doctor_id;
+}
+
+        $doctor_names = [];
+    foreach ($doctorIds as $doctor_id) {
+       // $doctor_id = $doctor->doctor_id;
+        $doctor_name = Doctor::where('doctor_id', $doctor_id)->value('fullname');
+        $doctor_names[$doctor_id] = $doctor_name;
+    }
+        return view('booking.index', compact('appointments', 'doctor_names', 'doctorIds' ));
     }
 
     public function doctorToday()

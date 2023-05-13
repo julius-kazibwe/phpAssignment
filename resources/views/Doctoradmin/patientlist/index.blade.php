@@ -38,9 +38,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Photo</th>
                                 <th scope="col">Date</th>
-                                <th scope="col">User</th>
+                                <th scope="col">Patient</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Time</th>
                                 <th scope="col">Doctor</th>
@@ -48,16 +47,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($bookings as $key=>$booking)
+                            @forelse($bookings as $booking)
                             <tr>
-                                <th scope="row">{{$key+1}}</th>
-                                <td><img src="/profile/{{$booking->user->image}}" width="80" style="border-radius: 50%;">
-                                </td>
+                                <th scope="row">{{$loop-> iteration}}</th>
                                 <td>{{$booking->date}}</td>
                                 <td>{{$booking->user->name}}</td>
                                 <td>{{$booking->user->email}}</td>
                                 <td>{{$booking->time}}</td>
-                                <td>{{$booking->doctor->name}}</td>
+                                <td>{{$doctor_names[$booking->doctor_id]}}</td>
                                 <td>
                                     @if($booking->status==0)
                                     <a href="{{route('update.status',[$booking->id])}}"><button class="btn btn-primary"> Pending</button></a>

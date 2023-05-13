@@ -38,13 +38,18 @@
                 {{Session::get('errmessage')}}
             </div>
             @endif
+            
+
             <form action="{{route('booking.appointment')}}" method="post">@csrf
                 <div class="card">
-                    <div class="card-header lead">{{$date}}</div>
+                    <div class="card-header lead">You can book an appointment with {{$docName->fullname}} on {{$date}} at [Select the time]</div>
 
                     <div class="card-body">
+                        
+
                         <div class="row">
                             @foreach($times as $time)
+
                             <div class="col-md-3">
                                 <label class="btn btn-outline-primary">
                                     <input type="radio" name="time" value="{{$time->time}}">

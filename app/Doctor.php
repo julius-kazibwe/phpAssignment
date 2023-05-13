@@ -41,7 +41,10 @@ class Doctor extends Model
     {
         return $this->hasMany('App\Article');
     }
-
+    public function bookings()
+    {
+        return $this->hasMany('App\nodels\Booking');
+    }
 
 
 }

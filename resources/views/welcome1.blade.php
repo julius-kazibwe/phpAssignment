@@ -18,6 +18,11 @@
         
     </div>
     <hr>
+    @if(Session::has('notime'))
+        <div class="alert alert-danger">
+            {{Session::get('notime') }}
+        </div>
+    @endif
     <section class="">
         <form action="{{url('/appointment')}}" method="get">
             <div class="card">

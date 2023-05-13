@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Appointment;
 use App\Time;
+use App\Doctor;
+use App\Models\DoctorSchedule;
 
 class AppointmentController extends Controller
 {
@@ -26,9 +28,30 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('Doctoradmin.appointment.create');
+        date_default_timezone_set('Australia/Melbourne');
+    if (request('date')) {
+        $doctors = $this->findDoctorsBasedOnDate(request('date'));
+    } else {
+        $doctors = DoctorSchedule::where('date', date('Y-m-d'))->get();
+    }
+    //$date = $request->input('date', date('Y-m-d'));
+
+    $doctor_names = [];
+    foreach ($doctors as $doctor) {
+        $doctor_id = $doctor->doctor_id;
+        $doctor_name = Doctor::where('doctor_id', $doctor_id)->value('fullname');
+        $doctor_names[$doctor_id] = $doctor_name;
     }
 
+    return view('Doctoradmin.appointment.create', compact('doctors', 'doctor_names'));
+}
+        
+    
+public function findDoctorsBasedOnDate($date)
+{
+    $doctors = DoctorSchedule::where('date', $date)->get();
+    return $doctors;
+}
     /**
      * Store a newly created resource in storage.
      *
@@ -39,14 +62,15 @@ class AppointmentController extends Controller
     {
         // validation, unique:table,column with the column id == user_id
         $this->validate($request, [
-            'date' => 'required|unique:appointments,date,NULL,id,user_id,' . \Auth::id(),
+           // 'date' => 'required,date,NULL,id,user_id,' . \Auth::id(),
             'time' => 'required'
         ]);
 
         $appointment = Appointment::create([
-            'user_id' => auth()->user()->id,
+            'doctor_id' => $request->doctor_id,
             'date' => $request->date
         ]);
+
         foreach ($request->time as $time) {
             Time::create([
                 'appointment_id' => $appointment->id,

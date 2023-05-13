@@ -26,9 +26,12 @@
             </div>
         </div>
     </div>
+    
 
     <div class="row justify-content-center">
         <div class="col-lg-10">
+            
+
             @if (Session::has('message'))
                 <div class="alert bg-success alert-success text-white text-center" role="alert">
                     {{ Session::get('message') }}
@@ -42,17 +45,72 @@
 
             @endforeach
             {{-- Form --}}
+            <form action="{{url('/appointment/create')}}" method="get">
+                    <div class="card">
+                        <div class="card-header">Find Available Appointment Date</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#datepicker" data-toggle="datetimepicker" id="datepicker" name="date">
+                                </div>
+                                <div class="col-sm-4">
+                                    <button class="btn btn-primary">Find Appointment Date</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+            </form>
             <form action="{{ route('appointment.store') }}" method="post">
                 @csrf
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Choose A Date</h3>
-                    </div>
+                <section class ="">
+
+                <div class="card mt-1">
+                    <div class="card-header"> Doctors available today</div>
                     <div class="card-body">
-                        <input type="text" class="form-control datetimepicker-input" id="datepicker"
-                            data-toggle="datetimepicker" data-target="#datepicker" name="date">
+                       <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Available Doctor</th>
+                                    <th scope="col">From [Time]</th>
+                                    <th scope="col">To [Time]</th>
+							        <th scope="col">Select</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @php
+                                $row_num = 1;
+                            @endphp
+                                @forelse($doctors as $doctor )
+                        
+                                <tr>
+                                    <th scope="row">{{$row_num++}}</th>
+                                    <td>{{ $doctor_names[$doctor->doctor_id] }}</td>
+                                    <td>{{$doctor->start_time}}</td>
+                                    <td>{{$doctor->end_time}}</td>
+                                    <td>
+                                        <div class="form-check">
+                                        <input type="hidden" name="date" value="{{$doctor->date}}">
+                                        <input class="form-check-input" type="radio" name="doctor_id" value="{{$doctor->doctor_id}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                @empty
+                                <td>No doctors available today</td>
+                                @endforelse
+
+
+                            </tbody>
+                        </table> 
+
+
                     </div>
+
                 </div>
+                </section>
 
                 <div class="card">
                     <div class="card-header">

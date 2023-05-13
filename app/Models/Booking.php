@@ -12,7 +12,7 @@ class Booking extends Model
 
     public function doctor()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(\App\Doctor::class);
     }
 
     public function user()

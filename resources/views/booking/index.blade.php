@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Your appointments({{$appointments->count()}}) </div>
+                <div class="card-header">You have {{$appointments->count()}} appointment(s)</div>
 
                 <div class="card-body">
                     <table class="table table-striped">
@@ -20,10 +20,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($appointments as $key=>$appointment)
+                            @forelse($appointments as  $appointment)
                             <tr>
-                                <th scope="row">{{$key+1}}</th>
-                                <td>{{$appointment->doctor->name}}</td>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{$doctor_names[$appointment->doctor_id] }} </td>
                                 <td>{{$appointment->time}}</td>
                                 <td>{{$appointment->date}}</td>
                                 <td>{{$appointment->created_at}}</td>
@@ -39,8 +39,11 @@
                                 </td>
                             </tr>
                             @empty
-                            <td>You have no any appointments</td>
+                                <tr>
+                                    <td colspan="6">You have no appointments</td>
+                                </tr>
                             @endforelse
+                            
 
                         </tbody>
                     </table>

@@ -9,10 +9,11 @@ use App\Models\User;
 class Appointment extends Model
 {
     protected $guarded = [];
+    
 
     public function doctor()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(Doctor::class, 'doctor_id', 'id');
     }
     public function times()
     {
