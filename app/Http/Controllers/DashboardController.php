@@ -16,7 +16,7 @@ class DashboardController extends Controller{
     if ($type == 'admin') {
         // Redirect to the admin dashboard
         $research = DB::table('users')->where('email', $final->email)->first();
-        return view('Doctoradmin.adminpage', compact('research'));
+        return view('Centeradmin.adminpage', compact('research'));
     } else {
         // Redirect to the patient dashboard
         

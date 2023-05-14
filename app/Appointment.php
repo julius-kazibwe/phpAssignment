@@ -3,13 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Center;
 class Appointment extends Model
 {
     protected $guarded = [];
 
-    public function Doctor()
+    public function center()
     {
-        return $this->belongsTo(Doctor::class, 'doctor_id', 'id');
+        return $this->belongsTo(Center::class, 'doctor_id', 'id');
     }
 }

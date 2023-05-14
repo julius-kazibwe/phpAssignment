@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Appointment;
 use App\Time;
-use App\Doctor;
-use App\Models\DoctorSchedule;
+use App\Center;
+use App\Models\CenterSchedule;
+use App\Models\Vaccine;
 
 class AppointmentController extends Controller
 {
@@ -18,7 +19,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $myAppointments = Appointment::latest()->where('user_id')->get();
-        return view('Doctoradmin.appointment.index', compact('myAppointments'));
+        return view('Createadmin.appointment.index', compact('myAppointments'));
     }
 
     /**
@@ -30,27 +31,35 @@ class AppointmentController extends Controller
     {
         date_default_timezone_set('Australia/Melbourne');
     if (request('date')) {
-        $doctors = $this->findDoctorsBasedOnDate(request('date'));
+        $centers = $this->findCentersBasedOnDate(request('date'));
     } else {
-        $doctors = DoctorSchedule::where('date', date('Y-m-d'))->get();
+        $centers = CenterSchedule::where('date', date('Y-m-d'))->get();
     }
     //$date = $request->input('date', date('Y-m-d'));
 
-    $doctor_names = [];
-    foreach ($doctors as $doctor) {
-        $doctor_id = $doctor->doctor_id;
-        $doctor_name = Doctor::where('doctor_id', $doctor_id)->value('fullname');
-        $doctor_names[$doctor_id] = $doctor_name;
+    $center_names = [];
+    foreach ($centers as $center) {
+        $center_id = $center->center_id;
+        $center_name = Center::where('center_id', $center_id)->value('center_name');
+        $center_names[$center_id] = $center_name;
+    }
+    $center_vaccines = [];
+    foreach ($centers as $center) {
+        
+        $centre = Center::where('center_id', $center->center_id)->first();
+        $vaccine_id = $centre->vaccine_id;
+        $vaccine_name = Vaccine::where('vaccine_id', $vaccine_id)->value('vaccine');
+        $center_vaccines[$vaccine_id] = $vaccine_name;
     }
 
-    return view('Doctoradmin.appointment.create', compact('doctors', 'doctor_names'));
+    return view('Centeradmin.appointment.create', compact('centers', 'center_vaccines', 'center_names'));
 }
         
     
-public function findDoctorsBasedOnDate($date)
+public function findCentersBasedOnDate($date)
 {
-    $doctors = DoctorSchedule::where('date', $date)->get();
-    return $doctors;
+    $centers = CenterSchedule::where('date', $date)->get();
+    return $centers;
 }
     /**
      * Store a newly created resource in storage.
@@ -67,7 +76,7 @@ public function findDoctorsBasedOnDate($date)
         ]);
 
         $appointment = Appointment::create([
-            'doctor_id' => $request->doctor_id,
+            'center_id' => $request->center_id,
             'date' => $request->date
         ]);
 

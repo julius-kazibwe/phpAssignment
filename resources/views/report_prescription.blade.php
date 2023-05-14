@@ -26,9 +26,9 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Doctor-ID</th>
+                    <th scope="col">Center-ID</th>
                     <th scope="col">Patient-ID</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">vaccine</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,9 +37,9 @@
                          
                                     <tr>
                                         <td>{{$prescription->id}}</td>
-                                        <td>{{$prescription->doctor_id}}</td>
+                                        <td>{{$prescription->center_id}}</td>
                                         <td>{{$prescription->patient_id}}</td>
-                                        <td>{{$prescription->description}}</td>
+                                        <td>{{$prescription->vaccine}}</td>
                                     <tr>
                            
 

@@ -15,12 +15,12 @@ class CreateTreatmentRecordsTable extends Migration
     {
         Schema::create('treatment_records', function (Blueprint $table) {
             $table->bigIncrements('record_id');
-            $table->unsignedBigInteger('doctor_id');
+            $table->unsignedBigInteger('center_id');
             $table->unsignedBigInteger('patient_id');
             $table->string('fullname');
-            $table->string('nic');
+            $table->string('nin');
             $table->string('date');
-            $table->string('description');
+            $table->string('vaccine');
         });
     }
 

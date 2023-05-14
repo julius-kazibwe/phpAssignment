@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Patient;
-use App\Doctor;
+use App\Center;
 class PatientlistController extends Controller
 {
     public function index(Request $request)
@@ -13,34 +13,34 @@ class PatientlistController extends Controller
         date_default_timezone_set('Africa/Tunis');
         if ($request->date) {
             $bookings = Booking::latest()->where('date', $request->date)->get();
-            $doctorIds = [];
+            $centerIds = [];
         foreach ($bookings as $booking) {
-       $doctorIds[] = $booking->doctor_id;
+       $centerIds[] = $booking->center_id;
    }
         
-        $doctor_names = [];
-        foreach ($doctorIds as $doctor_id) {
-           // $doctor_id = $doctor->doctor_id;
-            $doctor_name = Doctor::where('doctor_id', $doctor_id)->value('fullname');
-            $doctor_names[$doctor_id] = $doctor_name;
+        $center_names = [];
+        foreach ($centerIds as $center_id) {
+           // $center_id = $center->center_id;
+            $center_name = Center::where('center_id', $center_id)->value('center_name');
+            $center_names[$center_id] = $center_name;
         }
-            return view('Doctoradmin.patientlist.index', compact('bookings', 'doctor_names', 'doctorIds'));
+            return view('Centeradmin.patientlist.index', compact('bookings', 'center_names', 'centerIds'));
         }
         $bookings = Booking::latest()->where('date', date('Y-m-d'))->get();
 
-        $doctorIds = [];
+        $centerIds = [];
         foreach ($bookings as $booking) {
-       $doctorIds[] = $booking->doctor_id;
+       $centerIds[] = $booking->center_id;
    }
         
-        $doctor_names = [];
-        foreach ($doctorIds as $doctor_id) {
-           // $doctor_id = $doctor->doctor_id;
-            $doctor_name = Doctor::where('doctor_id', $doctor_id)->value('fullname');
-            $doctor_names[$doctor_id] = $doctor_name;
+        $center_names = [];
+        foreach ($centerIds as $center_id) {
+           // $center_id = $center->center_id;
+            $center_name = Center::where('doctor_id', $center_id)->value('center_name');
+            $center_names[$center_id] = $center_name;
         }
         
-        return view('Doctoradmin.patientlist.index', compact('bookings', 'doctor_names', 'doctorIds'));
+        return view('Centeradmin.patientlist.index', compact('bookings', 'center_names', 'centerIds'));
     }
 
     public function toggleStatus($id)
@@ -53,19 +53,19 @@ class PatientlistController extends Controller
     public function allTimeAppointment()
     {
         $bookings = Booking::latest()->paginate(20);
-        $doctorIds = [];
+        $centerIds = [];
         foreach ($bookings as $booking) {
-       $doctorIds[] = $booking->doctor_id;
+       $centerIds[] = $booking->center_id;
    }
         
-        $doctor_names = [];
-        foreach ($doctorIds as $doctor_id) {
-           // $doctor_id = $doctor->doctor_id;
-            $doctor_name = Doctor::where('doctor_id', $doctor_id)->value('fullname');
-            $doctor_names[$doctor_id] = $doctor_name;
+        $center_names = [];
+        foreach ($centerIds as $center_id) {
+           // $center_id = $center->center_id;
+            $center_name = Center::where('center_id', $center_id)->value('center_name');
+            $center_names[$center_id] = $center_name;
         }
         
-        return view('Doctoradmin.patientlist.index', compact('bookings', 'doctor_names', 'doctorIds'));
+        return view('Centeradmin.patientlist.index', compact('bookings', 'center_names', 'centerIds'));
         
         
     }

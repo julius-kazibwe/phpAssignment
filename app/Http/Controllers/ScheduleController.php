@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\Doctor;
-use App\Models\DoctorSchedule;
+use App\Center;
+use App\Models\CenterSchedule;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
-    public function schedule($doctor_id)
+    public function schedule($center_id)
 {
-    $doctor = Doctor::where('doctor_id', $doctor_id)->firstOrFail();
+    $center = Center::where('center_id', $center_id)->firstOrFail();
 
-    //$doctor = Doctor::findOrFail($doctor_id);
-    $schedules = DoctorSchedule::where('doctor_id', $doctor_id)->get();
-    return view('schedule.index', compact('doctor', 'schedules'));
+    //$center = Center::findOrFail($center_id);
+    $schedules = CenterSchedule::where('center_id', $center_id)->get();
+    return view('schedule.index', compact('center', 'schedules'));
 }
 
-public function store(Request $request, $doctor_id)
+public function store(Request $request, $center_id)
 {
     // Validate the input fields
     $request->validate([
@@ -28,21 +28,21 @@ public function store(Request $request, $doctor_id)
     ]);
 
     // Get the doctor
-    $doctor = Doctor::findOrFail($doctor_id);
+    $center = Center::findOrFail($center_id);
 
     // Check if the doctor already has a schedule on the given date
-    $existingSchedule = DoctorSchedule::where('doctor_id', $doctor_id)
+    $existingSchedule = CenterSchedule::where('center_id', $center_id)
         ->where('date', $request->date)
         ->first();
 
     if ($existingSchedule) {
         // Redirect back with an error message
-        return redirect()->back()->with('error', 'The doctor already has a schedule on the given date.');
+        return redirect()->back()->with('error', 'The center already has a schedule on the given date.');
     }
 
     // Save the new schedule
-    $schedule = new DoctorSchedule();
-    $schedule->doctor_id = $doctor_id;
+    $schedule = new CenterSchedule();
+    $schedule->center_id = $center_id;
     $schedule->date = $request->date;
     $schedule->start_time = $request->start_time;
     $schedule->end_time = $request->end_time;

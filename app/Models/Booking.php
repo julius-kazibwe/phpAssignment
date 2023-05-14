@@ -10,9 +10,9 @@ class Booking extends Model
 {
     protected $guarded = [];
 
-    public function doctor()
+    public function centers()
     {
-        return $this->belongsTo(\App\Doctor::class);
+        return $this->belongsTo(\App\Centers::class);
     }
 
     public function user()

@@ -23,8 +23,8 @@
                 @endforeach
             @endif
             <div class="form-group">
-                <label>Doctor_ID:</label>
-                <input type="string" class="form-control" id="did" name="doctor_id" placeholder="Enter Doctor_id">
+                <label>Center_ID:</label>
+                <input type="string" class="form-control" id="did" name="center_id" placeholder="Enter center_id">
               </div>
    
            
@@ -40,7 +40,7 @@
 
            <div class="form-group">
              <label>NIN NO</label>
-             <input type="string" class="form-control" id="nic" name="nic" placeholder="Enter NIN No">
+             <input type="string" class="form-control" id="nin" name="nin" placeholder="Enter NIN No">
            </div>
 
             <div class="form-group">
@@ -50,7 +50,7 @@
 
            <div class="form-group">
             <label>Vaccine taken:</label>
-            <textarea class="form-control" id="Description" name="description" rows="3"></textarea>
+            <textarea class="form-control" id="vaccine" name="vaccine" rows="3"></textarea>
            </div>
 
            <button type="submit" class="btn btn-primary">Submit</button>
@@ -61,8 +61,8 @@
        <button type="button" onclick="myFunction()" class="btn-btn-primary">Demo</button>
        <script>
          function myFunction(){
-         document.getElementById("a").value = "2019-10-16";
-         document.getElementById("Description").value = "good improvement";
+         document.getElementById("a").value = "2013-05-25";
+         document.getElementById("vaccine").value = " Oxford–AstraZeneca.";
          }
 
        </script>

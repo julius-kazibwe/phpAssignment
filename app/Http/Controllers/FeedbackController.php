@@ -34,7 +34,7 @@ class FeedbackController extends Controller
     public function index()
     {
         $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(4);
-        return view('Doctoradmin.adminfeed', compact('feedbacks'));
+        return view('Centeradmin.adminfeed', compact('feedbacks'));
     }
 
     public function fedreport()
@@ -46,21 +46,21 @@ class FeedbackController extends Controller
     public function fedadmin()
     {
         $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(3);
-        return view('Doctoradmin.adminpage', compact('feedbacks'));
+        return view('Centeradmin.adminpage', compact('feedbacks'));
     }
 
 
    
     public function create()
     {
-        return view('Doctoradmin.creategallery');
+        return view('Centeradmin.creategallery');
     }
 
     public function search(Request $request)
     {
         $search = $request->get('search');
         $feedback_data = DB::table('feedback')->where('patient_id','like', '%'.$search.'%')->paginate(50);
-        return view('Doctoradmin.feedback_pdf', ['feedback_data' => $feedback_data]);
+        return view('Centeradmin.feedback_pdf', ['feedback_data' => $feedback_data]);
     }
 
     public function media()

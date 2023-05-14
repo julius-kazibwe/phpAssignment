@@ -1,14 +1,17 @@
-@extends('main.layout.adminlayout')
+@extends('backend.lay')
+@section('title', 'Center Schedule')
+  
+<link rel="stylesheet" href={{ url('css/product/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}>
 
-@section('title', 'Doctor Schedule')
+<link rel="stylesheet" href={{ url('css/product/assets/css/style.css') }}>
 
 @section('content')
     <div class="container">
-        <h1>Schedule for {{ $doctor->fullname }}</h1>
+        <h1>Schedule for {{ $center->center_name }}</h1>
         <div class="row">
             <div class="col-md-6">
                 <h2>Add Schedule</h2>
-                <form method="post" action="{{ route('schedule.store', $doctor->doctor_id) }}">
+                <form method="post" action="{{ route('schedule.store', $center->center_id) }}">
                     @csrf
                     <div class="form-group">
                         <label for="date">Date</label>
@@ -33,6 +36,7 @@
                             <th>Date</th>
                             <th>Start Time</th>
                             <th>End Time</th>
+
                         </tr>
                     </thead>
                     <tbody>

@@ -29,9 +29,9 @@
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Doctor_id</th>
+                <th scope="col">Center_id</th>
                 <th scope="col">Patient_id</th>
-                <th scope="col">Prescription</th>
+                <th scope="col">Vaccine</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -44,9 +44,9 @@
                                  
               <tr class="table-active">
               <td>{{$prescription->id}}</td>
-              <td>{{$prescription->doctor_id}}</td>
+              <td>{{$prescription->center_id}}</td>
               <td>{{$prescription->patient_id}}</td>
-              <td>{{$prescription->description}}</td>
+              <td>{{$prescription->vaccine}}</td>
                 <td>
                   <a href='{{ url("/read_prescription/{$prescription->id}")}}' class="label label-primary"> Read </a>|
                   <a href='{{ url("/update_prescription/{$prescription->id}") }}' class="label label-success"> Update </a>|

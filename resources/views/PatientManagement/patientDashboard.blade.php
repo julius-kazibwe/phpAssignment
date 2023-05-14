@@ -140,7 +140,7 @@
             </div>
 		   
 			
-			<a href="/read_prescription/{{$research->patient_id}}">
+			<a href="/read_prescription">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">

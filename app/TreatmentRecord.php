@@ -8,6 +8,6 @@ class TreatmentRecord extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['doctor_id','patient_id','fullname','nic','date','description'];
+    protected $fillable = ['center_id','patient_id','fullname','nin','date','vaccine'];
     protected $primarykey = 'record_id';
 }

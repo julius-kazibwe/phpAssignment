@@ -49,9 +49,10 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Available Doctor</th>
+                            <th scope="col">Available center</th>
                             <th scope="col">From [Time]</th>
                             <th scope="col">To [Time]</th>
+                            <th scope="col">Available vaccine</th>
 							<th scope="col">Action</th>
                             <th></th>
                         </tr>
@@ -60,19 +61,21 @@
                     @php
                         $row_num = 1;
                     @endphp
-                        @forelse($doctors as $doctor )
+                        @forelse($centers as $center )
                         
                         <tr>
                             <th scope="row">{{$row_num++}}</th>
-                            <td>{{ $doctor_names[$doctor->doctor_id] }}</td>
-                            <td>{{$doctor->start_time}}</td>
-                            <td>{{$doctor->end_time}}</td>
+                            <td>{{ $center_names[$center->center_id] }}</td>
+                            <td>{{$center->start_time}}</td>
+                            <td>{{$center->end_time}}</td>
+                            <td>{{ $center_vaccines[$center->center_id]}}</td>
+                            <td></td>
                             <td>
-                                <a href="{{route('create.appointment',[$doctor->doctor_id, $doctor->date])}}"> <button class="btn btn-success">Book Appointment</button>
+                                <a href="{{route('create.appointment',[$center->center_id, $center->date])}}"> <button class="btn btn-success">Book Appointment</button>
                             </td>
                         </tr>
                         @empty
-                        <td>No doctors available today</td>
+                        <td>No centers available today</td>
                         @endforelse
 
 

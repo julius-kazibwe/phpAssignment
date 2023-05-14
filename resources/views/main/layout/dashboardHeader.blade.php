@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-        <title>{{config('app.name','IHHR')}}</title>
+        <title>Covid Vaccination and Tracking</title>
      
 
        

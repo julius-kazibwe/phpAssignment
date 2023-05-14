@@ -11,8 +11,8 @@
                     <img src="{{ asset('images/main/mainlayout/icons/map-marker.png') }}" alt="">
                 </div>
                 <div class="hi-content">
-                    <h6>City Government House</h6>
-                    <p>Kampala, Uganda</p>
+                    <h6>Cocis</h6>
+                    <p>Makerere University Kampala, Uganda</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 hi-item">

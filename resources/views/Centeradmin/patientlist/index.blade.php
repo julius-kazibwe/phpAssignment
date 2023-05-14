@@ -42,7 +42,7 @@
                                 <th scope="col">Patient</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Time</th>
-                                <th scope="col">Doctor</th>
+                                <th scope="col">Center</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
@@ -54,7 +54,7 @@
                                 <td>{{$booking->user->name}}</td>
                                 <td>{{$booking->user->email}}</td>
                                 <td>{{$booking->time}}</td>
-                                <td>{{$doctor_names[$booking->doctor_id]}}</td>
+                                <td>{{$center_names[$booking->center_id]}}</td>
                                 <td>
                                     @if($booking->status==0)
                                     <a href="{{route('update.status',[$booking->id])}}"><button class="btn btn-primary"> Pending</button></a>

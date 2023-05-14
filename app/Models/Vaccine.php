@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Vaccine extends Model
 {
     protected $guarded = [];
+    protected $primaryKey = 'vaccine_id';
+    protected $fillable = ['vaccine'];
 }

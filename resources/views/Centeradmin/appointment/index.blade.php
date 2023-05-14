@@ -286,7 +286,7 @@
             @foreach ($myAppointments as $appointment)
                 <tr>
                     <td>{{ $loop->index + 1 }}</td>
-                    <td>{{ $appointment->doctor->name }}</td>
+                    <td>{{ $appointment->center->name }}</td>
                     <td>{{ $appointment->date }}</td>
                     <td>
                         <form action="{{ route('appointment.check') }}" method="post">@csrf

@@ -12,7 +12,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Doctor</th>
+                                <th scope="col">Center</th>
                                 <th scope="col">Time</th>
                                 <th scope="col">Date for</th>
                                 <th scope="col">Created date</th>
@@ -23,7 +23,7 @@
                             @forelse($appointments as  $appointment)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{$doctor_names[$appointment->doctor_id] }} </td>
+                                <td>{{$center_names[$appointment->center_id] }} </td>
                                 <td>{{$appointment->time}}</td>
                                 <td>{{$appointment->date}}</td>
                                 <td>{{$appointment->created_at}}</td>

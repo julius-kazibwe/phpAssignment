@@ -11,9 +11,13 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <form class="form-horizontal" method="GET" action="{{ url('/home_prescription') }}">
-      {{ method_field('PUT') }}
-       {{ csrf_field() }}
+      <form class="form-horizontal" method="POST" action='{{ url("/update_prescription/{$prescription->id}") }}'>
+     
+      @csrf
+      @method('PUT')
+      <input type= 'hidden' value="{{$prescription->id}}" id="id">
+
+
       
          <fieldset>
            <legend>Prescription</legend>
@@ -26,8 +30,8 @@
             @endif
           
             <div class="form-group">
-                <label>Doctor_ID:</label>
-                <input type="string" class="form-control" id="pid" name="doctor_id" placeholder="Enter Doctor_id" value="{{$prescription->doctor_id}}">
+                <label>Center_ID:</label>
+                <input type="string" class="form-control" id="pid" name="doctor_id" placeholder="Enter Doctor_id" value="{{$prescription->center_id}}">
               </div>
    
            
@@ -38,9 +42,8 @@
 
            <div class="form-group">
                <label>Prescription:</label>
-               <textarea class="form-control" id="Description" name="description" rows="3">{{$prescription->description}}</textarea>
+               <textarea class="form-control" id="Description" name="description" rows="3">{{$prescription->vaccine}}</textarea>
            </div>
-
            <button type="submit" class="btn btn-primary">Update</button>
            <button type="reset" class="btn btn-primary">Cancel</button>
            <a href="{{ url('/home_prescription') }}" class="btn btn-primary">Back</a>

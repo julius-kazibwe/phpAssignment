@@ -10,9 +10,9 @@ class Perscription extends Model
     protected $guarded = [];
 
 
-    public function doctor()
+    public function center()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Center::class);
     }
 
     public function user()

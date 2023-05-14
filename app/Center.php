@@ -4,30 +4,30 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Doctor extends Model
+class Center extends Model
 {
     public $timestamps =false;  
     
     // a doctor visits patient many days
-    protected $fillable=['doctor_id','fullname','nic','type'];
-    protected $primaryKey = 'doctor_id';
+    protected $fillable=['center_id','center_name','location','vaccine_id'];
+    protected $primaryKey = 'center_id';
 
 
     public function visitingdays()
     {
-        return $this->hasMany('App\Models\DoctorSchedule');
+        return $this->hasMany('App\Models\CenterSchedule');
     }
 
-    // a doctor has many contact numbers
-    public function doctorcontacts()
-    {
-        return $this->hasMany('App\DoctorContact');
-    }
+   
 
     // a doctor has many appointments(with patients)
     public function appointments()
     {
         return $this->hasMany('App\Appointment');
+    }
+    public function vaccines()
+    {
+        return $this->hasMany('App\Models\Vaccine');
     }
 
     // a doctor has many notices
@@ -36,11 +36,7 @@ class Doctor extends Model
         return $this->hasMany('App\Notice');
     }
 
-    // a doctor has many articles
-    public function articles()
-    {
-        return $this->hasMany('App\Article');
-    }
+   
     public function bookings()
     {
         return $this->hasMany('App\nodels\Booking');

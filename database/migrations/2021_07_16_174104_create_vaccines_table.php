@@ -14,10 +14,24 @@ class CreateVaccinesTable extends Migration
     public function up()
     {
         Schema::create('vaccines', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('vaccine_id');
             $table->string('vaccine');
             $table->timestamps();
         });
+
+        DB::table('vaccines')->insert(
+            array(
+                
+                'vaccine' => 'Oxford–AstraZeneca',
+                
+            )
+        );
+        DB::table('vaccines')->insert(
+            array(
+                'vaccine' => 'Janssen',
+                
+            )
+        );
     }
 
     /**

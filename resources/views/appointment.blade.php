@@ -12,7 +12,7 @@
                     <br>
                     <p class="lead">Name :  {{($user->fullname)}}</p> 
                     <p class="lead">Place :  {{$user->address1}}</p>
-                    <p class="lead">Vaccine :  Astra Zeneca/Oxford</p>
+                    <p class="lead">Vaccine : {{$vaccine->vaccine}} </p>
 					
                 </div>
 				
@@ -42,7 +42,7 @@
 
             <form action="{{route('booking.appointment')}}" method="post">@csrf
                 <div class="card">
-                    <div class="card-header lead">You can book an appointment with {{$docName->fullname}} on {{$date}} at [Select the time]</div>
+                    <div class="card-header lead">You can book an appointment with {{$centerName->center_name}} on {{$date}} at [Select the time]</div>
 
                     <div class="card-body">
                         
@@ -56,7 +56,7 @@
                                     <span>{{$time->time}}</span>
                                 </label>
                             </div>
-                            <input type="hidden" name="doctorId" value="{{$doctor_id}}">
+                            <input type="hidden" name="centerId" value="{{$center_id}}">
                             <input type="hidden" name="appointmentId" value="{{$time->appointment_id}}">
                             <input type="hidden" name="date" value="{{$date}}">
 

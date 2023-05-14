@@ -73,9 +73,10 @@ Route::get('/create_prescription', function(){
 Route::post('/insert_prescription', 'App\Http\Controllers\PrescriptionController@add2');
 
 Route::get('/update_prescription/{id}', 'App\Http\Controllers\PrescriptionController@edit2');
-Route::get('/edit_prescription/{id}', 'App\Http\Controllers\PrescriptionController@update2');
+Route::put('/edit_prescription/{id}', 'App\Http\Controllers\PrescriptionController@update2');
+Route::get('/read_prescription', 'App\Http\Controllers\PrescriptionController@show');
 
-Route::get('/read_prescription/{id}', 'App\Http\Controllers\PrescriptionController@show');
+Route::get('/read_prescription/{id}', 'App\Http\Controllers\PrescriptionController@show2');
 Route::get('/delete_prescription/{id}', 'App\Http\Controllers\PrescriptionController@destroy');
 
 
@@ -111,29 +112,6 @@ Route::get("/searchtreat",'App\Http\Controllers\TreatmentController@search');
 Route::resource('patient', 'App\Http\Controllers\PatientDashboardController');
 Route::resource('search', 'App\Http\Controllers\SearchController');
 
-// order
-Route::get('/shoppingcart', function () {
-    return view('product_order_system.ShoppingCart');
-});
-
-Route::get('/search-product', 'App\Http\Controllers\ProductSearchController@index');
-
-Route::get('/search-product', 'App\Http\Controllers\ProductSearchController@index');
-Route::get('/viewproduct/{id}', 'App\Http\Controllers\ProductSearchController@show');
-Route::get('/productshow','ProductViewController@index');
-Route::post('search-product','App\Http\Controllers\ProductSearchController@search');
-Route::get('/order-admindash','App\Http\Controllers\ProductAdminDashController@index')->middleware('auth');
-Route::post('order-admindash','App\Http\Controllers\ProductAdminDashController@search');
-Route::post('/print_order_row','App\Http\Controllers\ProductAdminDashController@print_row');
-Route::post('admindash_status','App\Http\Controllers\ProductAdminDashController@updatesatus');
-Route::get('/paitientorderdash','App\Http\Controllers\PaitientOrderDashController@indexpaitent')->middleware('auth');
-Route::post('/paitientorderdash/general','App\Http\Controllers\PaitientOrderDashController@searchgeneral');
-Route::post('/paitientorderdash/medical','App\Http\Controllers\PaitientOrderDashController@searchmedical');
-Route::post('paitientorderdash/edit','App\Http\Controllers\PaitientOrderDashController@showedit');
-Route::post('paitientorderdash/updateorder','App\Http\Controllers\PaitientOrderDashController@updates');
-Route::resource('paitintorder','App\Http\Controllers\PaitientOrderDashController');
-Route::get('/user-prescriptions','PatientPriscriptionOrderController@show')->middleware('auth');
-Route::post('/user-prescriptions','PatientPriscriptionOrderController@search');
 
 
 
@@ -145,8 +123,8 @@ Route::post('/appointment/update', 'App\Http\Controllers\AppointmentController@u
 
 
 
-//doctor
-Route::get('/doctor', 'App\Http\Controllers\DoctorManagementController@index');
+//center
+Route::get('/center', 'App\Http\Controllers\CenterManagementController@index');
   
   
 //VaccineAppointment
@@ -169,6 +147,6 @@ Route::get('/dashboard/{type}', 'App\Http\Controllers\DashboardController@index'
 Route::delete('/userdelete/{id}', 'App\Http\Controllers\PatientDashboardController@destroy');
 
 Route::prefix('manage/schedule')->group(function () {
-    Route::get('/doctor/{doctor_id}', 'App\Http\Controllers\ScheduleController@schedule')->name('schedule.doctor');
-    Route::post('/doctor/{doctor_id}', 'App\Http\Controllers\ScheduleController@store')->name('schedule.store');
+    Route::get('/center/{center_id}', 'App\Http\Controllers\ScheduleController@schedule')->name('schedule.center');
+    Route::post('/center/{center_id}', 'App\Http\Controllers\ScheduleController@store')->name('schedule.store');
 });

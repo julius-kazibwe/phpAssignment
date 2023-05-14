@@ -67,15 +67,16 @@
                 <section class ="">
 
                 <div class="card mt-1">
-                    <div class="card-header"> Doctors available today</div>
+                    <div class="card-header"> Centers available today</div>
                     <div class="card-body">
                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Available Doctor</th>
+                                    <th scope="col">Available Center</th>
                                     <th scope="col">From [Time]</th>
                                     <th scope="col">To [Time]</th>
+                                    <th scope="col">Available vaccine</th>
 							        <th scope="col">Select</th>
                                     <th></th>
                                 </tr>
@@ -84,22 +85,23 @@
                             @php
                                 $row_num = 1;
                             @endphp
-                                @forelse($doctors as $doctor )
+                                @forelse($centers as $center )
                         
                                 <tr>
                                     <th scope="row">{{$row_num++}}</th>
-                                    <td>{{ $doctor_names[$doctor->doctor_id] }}</td>
-                                    <td>{{$doctor->start_time}}</td>
-                                    <td>{{$doctor->end_time}}</td>
+                                    <td>{{ $center_names[$center->center_id] }}</td>
+                                    <td>{{$center->start_time}}</td>
+                                    <td>{{$center->end_time}}</td>
+                                    <td>{{$center_vaccines[$center->center_id]}}</td>
                                     <td>
                                         <div class="form-check">
-                                        <input type="hidden" name="date" value="{{$doctor->date}}">
-                                        <input class="form-check-input" type="radio" name="doctor_id" value="{{$doctor->doctor_id}}">
+                                        <input type="hidden" name="date" value="{{$center->date}}">
+                                        <input class="form-check-input" type="radio" name="center_id" value="{{$center->center_id}}">
                                         </div>
                                     </td>
                                 </tr>
                                 @empty
-                                <td>No doctors available today</td>
+                                <td>No centers available today</td>
                                 @endforelse
 
 

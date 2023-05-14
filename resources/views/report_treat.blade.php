@@ -27,11 +27,11 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Patient ID</th>
-                    <th scope="col">Doctor ID</th>
+                    <th scope="col">Center ID</th>
                     <th scope="col">Fullname</th>
-                    <th scope="col">NIC No</th>
+                    <th scope="col">NIN No</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Vaccine</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,12 +40,12 @@
                          
                                     <tr>
                                         <td>{{$treatment_record->record_id}}</td>
-                                        <td>{{$treatment_record->doctor_id}}</td>
                                         <td>{{$treatment_record->patient_id}}</td>
+                                        <td>{{$treatment_record->center_id}}</td>
                                         <td>{{$treatment_record->fullname}}</td>
-                                       <td>{{$treatment_record->nic}}</td>
+                                       <td>{{$treatment_record->nin}}</td>
                                         <td>{{$treatment_record->date}}</td>
-                                        <td>{{$treatment_record->description}}</td>
+                                        <td>{{$treatment_record->vaccine}}</td>
                                     <tr>
                            
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrescribedProductsTable extends Migration
+class CreateAppointmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreatePrescribedProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prescribed_products', function (Blueprint $table) {
+        Schema::create('appointments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('prescription_id');
-            $table->unsignedBigInteger('product_type_id');
+           
+            $table->unsignedBigInteger('center_id');
+            $table->string('date');
+
             $table->timestamps();
+            $table->foreign('center_id')->references('center_id')->on('centers')->onDelete('cascade');
+
         });
     }
 
@@ -28,6 +32,6 @@ class CreatePrescribedProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prescribed_products');
+        Schema::dropIfExists('appointments');
     }
 }

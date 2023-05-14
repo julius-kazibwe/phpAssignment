@@ -11,11 +11,11 @@
         <legend>Treatment Record</legend>
         ID:<p>{{$treatment_record->record_id}}</p>
         Patient ID:<p>{{$treatment_record->patient_id}}</p>
-        Doctor ID:<p>{{$treatment_record->doctor_id}}</p>
-        Full Name:<p>{{$treatment_record->name}}</p>
-        NIC No:<p>{{$treatment_record->nic}}</p>
+        Center ID:<p>{{$treatment_record->center_id}}</p>
+        Full Name:<p>{{$treatment_record->fullname}}</p>
+        NIN No:<p>{{$treatment_record->nin}}</p>
         Date:<p>{{$treatment_record->date}}</p>
-        Description:<p>{{$treatment_record->description}}</p>
+        Vaccine:<p>{{$treatment_record->vaccine}}</p>
 
     </div>
     <a href="{{ url('/patient') }}" class="btn btn-primary">Back</a>

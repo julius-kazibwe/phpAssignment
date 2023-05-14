@@ -24,8 +24,8 @@
             @endif
            
           <div class="form-group">
-                <label>Doctor_ID:</label>
-                <input type="string" class="form-control" id="did" name="doctor_id" value="{{$treatment_record->doctor_id}}" required>
+                <label>Center_ID:</label>
+                <input type="string" class="form-control" id="did" name="center_id" value="{{$treatment_record->center_id}}" required>
               </div>
    
            
@@ -40,8 +40,8 @@
            </div>
 
            <div class="form-group">
-             <label>NIC NO</label>
-             <input type="string" class="form-control" id="nic" name="nic" value="{{$treatment_record->nic}}" required>
+             <label>NIN NO</label>
+             <input type="string" class="form-control" id="nin" name="nin" value="{{$treatment_record->nin}}" required>
            </div>
 
             <div class="form-group">
@@ -50,7 +50,7 @@
 
            <div class="form-group">
             <label>Note on patient:</label>
-            <textarea class="form-control" id="Description" name="description" rows="3" >{{$treatment_record->description}}</textarea>
+            <textarea class="form-control" id="vaccine" name="vaccine" rows="3" >{{$treatment_record->vaccine}}</textarea>
            </div>
 
            <button type="update" class="btn btn-primary">Update</button>

@@ -7,10 +7,10 @@
                     <div class="fw-about">
                         <a href="" class="site-logo-footer"> <img
                                 src="{{ asset('images/main/mainlayout/logo_light_long.png') }}" alt=""></a>
-                        <p>COVID MANAGEMENT AND TRACKING<br>
+                        <p>COVID VACCINATION AND TRACKING MANANGEMENT SYSTEM<br>
 Tel: +256-702-932328<br>
-Fax: +256-222-2262<br>
-E-mail: group8gmail.com</p>
+tEL: +256-703716357<br>
+GITHUB: https://github.com/julius-kazibwe/phpAssignment</p>
                     </div>
                 </div>
             </div>

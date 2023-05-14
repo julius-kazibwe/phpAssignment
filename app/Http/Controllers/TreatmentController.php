@@ -16,21 +16,21 @@ class TreatmentController extends Controller
 
     public function add1(Request $request){
         $this->validate($request,[
-            'doctor_id'=>'required',
+            'center_id'=>'required',
             'patient_id' => 'required',
             'fullname' => 'required',
-            'nic' => 'required',
+            'nin' => 'required',
             'date' => 'required',
-            'description' => 'required'
+            'vaccine' => 'required'
         ]);
     
         $treatment_records = new TreatmentRecord;
-        $treatment_records->doctor_id = $request->input('doctor_id');
+        $treatment_records->center_id = $request->input('center_id');
         $treatment_records->patient_id = $request->input('patient_id');
         $treatment_records->fullname = $request->input('fullname');
-        $treatment_records->nic = $request->input('nic');
+        $treatment_records->nin = $request->input('nin');
         $treatment_records->date = $request->input('date');
-        $treatment_records->description = $request->input('description');
+        $treatment_records->vaccine = $request->input('vaccine');
     
         $treatment_records->save();
         return redirect('/home_treat')->with('info','Treatment record saved successfully!');
@@ -45,21 +45,21 @@ class TreatmentController extends Controller
     public function edit1(Request $request,$id)
     {
         $request->validate([
-            'doctor_id'=>'required',
+            'center_id'=>'required',
             'patient_id' => 'required',
             'fullname' => 'required',
-            'nic' => 'required',
+            'nin' => 'required',
             'date' => 'required',
-            'description' => 'required'
+            'vaccine' => 'required'
         ]);
         
         $treatment_record = TreatmentRecord::where('record_id',$id)->first();
-        $treatment_records->doctor_id = $request->input('doctor_id');
+        $treatment_records->center_id = $request->input('center_id');
         $treatment_records->patient_id = $request->input('patient_id');
         $treatment_records->fullname = $request->input('fullname');
-        $treatment_records->nic = $request->input('nic');
+        $treatment_records->nin = $request->input('nin');
         $treatment_records->date = $request->input('date');
-        $treatment_records->description = $request->input('description');
+        $treatment_records->vaccine = $request->input('vaccine');
     
         $treatment_records->save();
   
@@ -98,12 +98,12 @@ class TreatmentController extends Controller
     {
     $search = $request->get('search');
     $treatment_records = DB::table('treatment_records')->where('record_id','like', '%'.$search.'%')
-                                     ->orwhere('doctor_id','like','%'.$search.'%')
+                                     ->orwhere('center_id','like','%'.$search.'%')
                                      ->orwhere('patient_id','like','%'.$search.'%')
                                      ->orwhere('fullname','like','%'.$search.'%')
-                                     ->orwhere('nic','like','%'.$search.'%')
+                                     ->orwhere('nin','like','%'.$search.'%')
                                      ->orwhere('date','like','%'.$search.'%')
-                                     ->orwhere('description','like','%'.$search.'%')
+                                     ->orwhere('vaccine','like','%'.$search.'%')
                                      ->paginate(10);
     return view('report_treat', ['treatment_records' => $treatment_records]);
     }

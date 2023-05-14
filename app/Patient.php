@@ -20,11 +20,7 @@ class Patient extends Authenticatable
 
     public $timestamps = false;
 
-    // A patient has many phone numbers
-    public function patientcontacts()
-    {
-        return $this->hasMany('App\PatientContact');
-    }
+
 
     // A patient has many appointments
     public function appointments()
@@ -38,17 +34,7 @@ class Patient extends Authenticatable
         return $this->hasMany('App\Feedback');
     }
 
-    // A patient has many orders
-    public function orders()
-    {
-        return $this->hasMany('App\Order');
-    }
-
-    // A patient has a personal record
-    public function personalrecord()
-    {
-        return $this->hasOne('App\PersonalRecord');
-    }
+    
 
     public function prescriptions(){
         return $this->hasMany('App\Prescription');
