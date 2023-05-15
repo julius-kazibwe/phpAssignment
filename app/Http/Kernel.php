@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http;
-ini_set('max_execution_time', 300); // increase maximum execution time to 300 seconds
+ini_set('max_execution_time', 3600); // increase maximum execution time to 3600 seconds
 
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
