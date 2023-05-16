@@ -17,10 +17,9 @@ class CreateTreatmentRecordsTable extends Migration
             $table->bigIncrements('record_id');
             $table->unsignedBigInteger('center_id');
             $table->unsignedBigInteger('patient_id');
-            $table->string('fullname');
-            $table->string('nin');
+            $table->unsignedBigInteger('vaccine_id');
             $table->string('date');
-            $table->string('vaccine');
+            
         });
     }
 

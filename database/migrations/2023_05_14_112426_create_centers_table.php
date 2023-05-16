@@ -20,7 +20,6 @@ class CreateCentersTable extends Migration
             $table->unsignedBigInteger('vaccine_id');
             $table->foreign('vaccine_id')->references('vaccine_id')->on('vaccines')->onDelete('cascade');
 
-            //$table->primary('doctor_id');
         });
 
         // adding dummy entries
