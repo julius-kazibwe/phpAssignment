@@ -83,16 +83,16 @@
                             </thead>
                             <tbody>
                             @php
-                                $row_num = 1;
+                               
                             @endphp
-                                @forelse($centers as $center )
+                                @forelse($centers as $index => $center )
                         
                                 <tr>
-                                    <th scope="row">{{$row_num++}}</th>
-                                    <td>{{ $center_names[$center->center_id] }}</td>
+                                    <th scope="row">{{$index+1}}</th>
+                                    <td>{{ $center_names[$index] }}</td>
                                     <td>{{$center->start_time}}</td>
                                     <td>{{$center->end_time}}</td>
-                                    <td>{{$center_vaccines[$center->center_id]}}</td>
+                                    <td>{{$center_vaccines[$index]}}</td>
                                     <td>
                                         <div class="form-check">
                                         <input type="hidden" name="date" value="{{$center->date}}">

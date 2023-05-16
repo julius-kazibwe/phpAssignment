@@ -11,9 +11,9 @@
     <div class="col-md-6">
         <legend>Prescription</legend>
         ID:<p>{{$prescription->id}}</p>
-        Doctor_id:<p>{{$prescription->doctor_id}}</p>
-        Patient_id:<p>{{$prescription->patient_id}}</p>
-        Prescription:<p>{{$prescription->description}}</p>
+        Center:<p>{{$center}}</p>
+        Patient:<p>{{$patient}}</p>
+        Prescription:<p>{{$vaccine}}</p>
 
     </div>
     <a href="{{ '/home_prescription' }}" class="btn btn-primary">Back</a>

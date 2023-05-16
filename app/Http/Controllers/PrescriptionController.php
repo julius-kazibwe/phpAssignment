@@ -5,13 +5,44 @@ use Illuminate\Support\Facades\Auth;
 use App\Prescription;
 use App\Patient;
 use App\User;
+use DB;
+use App\Models\Vaccine;
+use App\Center;
 use Illuminate\Http\Request;
 
 class PrescriptionController extends Controller
 {
     public function home2(Request $request){
         $prescriptions = Prescription::all();
-        return view('home_prescription',['prescriptions'=>$prescriptions]);
+        
+        $centers= [];
+        foreach($prescriptions as $index => $p){
+           
+            $treatmentCenter = Prescription::where('center_id', $p->center_id)->first();
+            $center =Center::where('center_id', $treatmentCenter->center_id)->first();
+            $centers[$index]=$center->center_name;
+    
+        }
+        $vaccines= [];
+        foreach($prescriptions as $index => $p){
+            
+            $treatmentvaccine = Prescription::where('vaccine', $p->vaccine)->first();
+            $vaccine = Vaccine::where('vaccine_id', $treatmentvaccine->vaccine)->first();
+            $vaccines[$index]=$vaccine->vaccine;
+    
+        }
+        
+        $patients = [];
+        
+        foreach ($prescriptions as $index => $p) {
+            
+            $patient= Prescription::where('patient_id', $p->patient_id)->first();
+            $patient_name = Patient::where('patient_id', $patient->patient_id)->first();
+            $patients[$index] = $patient_name->fullname;
+            
+        }
+        return view('home_prescription', compact('prescriptions','patients','vaccines','centers'));
+
     }
 
     public function add2(Request $request){
@@ -30,21 +61,27 @@ class PrescriptionController extends Controller
         return redirect('/home_prescription')->with('info','prescription saved successfully!');
     }
 
-    public function edit2($id)
+    public function update2($id)
     {
         $prescription = Prescription::findOrFail($id);
     
         return view('update_prescription', compact("prescription"));
     }
 
-    public function update2(Request $request)
+    public function edit2(Request $request, $id)
     {
         $this->validate($request,[
             'center_id'=>'required',
             'patient_id' => 'required',
             'vaccine' => 'required'
         ]);
-        $id = $request->id;
+
+        $query = Prescription::where('id', $id)->update([
+            'center_id' => $request->input('center_id'),
+            'vaccine' => $request->input('vaccine'),
+            'patient_id' => $request->input('patient_id')
+    
+        ]);
         $prescription= Prescription::findOrFail($id);
         $prescription->center_id = $request->center_id;
         $prescription->patient_id = $request->patient_id;
@@ -60,17 +97,42 @@ class PrescriptionController extends Controller
         $patient_id = $currentPatient->patient_id;
 
         $prescription = Prescription::where('patient_id', $patient_id)->get();
-        if ($prescription !== null) {
-            return view('read_prescription', compact('prescription'));
-        } else {
-            return redirect()->back()->withErrors(['No prescriptions found for the patient.']);
+        
+       
+        $centers= [];
+        foreach($prescription as $index => $p){
+           
+            $treatmentCenter = Prescription::where('center_id', $p->center_id)->first();
+            $center =Center::where('center_id', $treatmentCenter->center_id)->first();
+            $centers[$index]=$center->center_name;
+    
+        }
+        $vaccines= [];
+        foreach($prescription as $index => $p){
+            
+            $treatmentvaccine = Prescription::where('vaccine', $p->vaccine)->first();
+            $vaccine = Vaccine::where('vaccine_id', $treatmentvaccine->vaccine)->first();
+            $vaccines[$index]=$vaccine->vaccine;
+    
         }
         
+       
+
+        return view('read_prescription', compact('prescription','currentPatient', 'centers','vaccines'));
     }
+
     public function show2(Prescription $prescription,$id)
     {
-        $prescription = Prescription::find($id);
-        return view('read_prescriptionadmin',compact('prescription'));
+        $prescription = Prescription::where('id', $id)->first();
+
+        $center =Center::where('center_id', $prescription->center_id)->value('center_name');
+
+        $vaccine =Vaccine::where('vaccine_id', $prescription->vaccine)->value('vaccine');
+
+        $patient = Patient::where('patient_id', $prescription->patient_id)->value('fullname');
+
+        return view('read_prescriptionadmin',compact('prescription', 'center','vaccine', 'patient'));
+    
     }
 
     public function destroy(Prescription $prescription,$id)
@@ -84,16 +146,61 @@ class PrescriptionController extends Controller
     public function reports()
     {
         $prescriptions =Prescription::paginate(10);
-        return view('report_prescription', compact('prescriptions'));
+        $centers = [];
+        foreach ($prescriptions as $index=> $prescription) {
+            $center_id = $prescription->center_id;
+            $center_name = Center::where('center_id', $center_id)->value('center_name');
+            $centers[$index] = $center_name;
+        }
+
+        $vaccines = [];
+        foreach ($prescriptions as $index=> $prescription) {
+            $vaccine_id = $prescription->vaccine;
+            $vaccine_name = Vaccine::where('vaccine_id', $vaccine_id)->value('vaccine');
+            $vaccines[$index] = $vaccine_name;
+        }
+        $patients = [];
+        
+        foreach ($prescriptions as $index=> $prescription) {
+            $patient_id = $prescription->patient_id;
+            $patient_name = Patient::where('patient_id', $patient_id)->value('fullname');
+            $patients[$index] = $patient_name;
+        }
+
+
+
+        return view('report_prescription',compact('prescriptions','centers','patients','vaccines'));
     }
 
     public function search(Request $request)
     {
         $search = $request->get('search');
         $prescriptions = DB::table('prescriptions')->where('id','like', '%'.$search.'%')
-                                         ->orwhere('center_id','like','%'.$search.'%')
-                                         ->orwhere('patient_id','like','%'.$search.'%')
                                          ->paginate(10);
-        return view('report_prescription', ['prescriptions' => $prescriptions]);
-    }
+                                         $centers = [];
+                                         foreach ($prescriptions as $index=> $prescription) {
+                                             $center_id = $prescription->center_id;
+                                             $center_name = Center::where('center_id', $center_id)->value('center_name');
+                                             $centers[$index] = $center_name;
+                                         }
+                                 
+                                         $vaccines = [];
+                                         foreach ($prescriptions as $index=> $prescription) {
+                                             $vaccine_id = $prescription->vaccine;
+                                             $vaccine_name = Vaccine::where('vaccine_id', $vaccine_id)->value('vaccine');
+                                             $vaccines[$index] = $vaccine_name;
+                                         }
+                                         $patients = [];
+                                         
+                                         foreach ($prescriptions as $index=> $prescription) {
+                                             $patient_id = $prescription->patient_id;
+                                             $patient_name = Patient::where('patient_id', $patient_id)->value('fullname');
+                                             $patients[$index] = $patient_name;
+                                         }
+                                 
+                                 
+                                 
+                                         return view('report_prescription',compact('prescriptions','centers','patients','vaccines'));
+                                     }
+                                 
 }

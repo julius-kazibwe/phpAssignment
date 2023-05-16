@@ -28,9 +28,9 @@
             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Center_id</th>
-                <th scope="col">Patient_id</th>
+                <th scope="col">#</th>
+                <th scope="col">Center</th>
+                <th scope="col">Patient</th>
                 <th scope="col">Vaccine</th>
                 <th scope="col">Action</th>
               </tr>
@@ -38,15 +38,15 @@
 
             <tbody>
                          @if (count($prescriptions)>0)
-                         @foreach ($prescriptions as $prescription)
+                         @foreach ($prescriptions as $index=> $prescription)
                              
                                        
                                  
               <tr class="table-active">
-              <td>{{$prescription->id}}</td>
-              <td>{{$prescription->center_id}}</td>
-              <td>{{$prescription->patient_id}}</td>
-              <td>{{$prescription->vaccine}}</td>
+              <td>{{$index+1}}</td>
+              <td>{{$centers[$index]}}</td>
+              <td>{{$patients[$index]}}</td>
+              <td>{{$vaccines[$index]}}</td>
                 <td>
                   <a href='{{ url("/read_prescription/{$prescription->id}")}}' class="label label-primary"> Read </a>|
                   <a href='{{ url("/update_prescription/{$prescription->id}") }}' class="label label-success"> Update </a>|

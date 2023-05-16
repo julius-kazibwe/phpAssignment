@@ -25,21 +25,21 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Center-ID</th>
-                    <th scope="col">Patient-ID</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Center</th>
+                    <th scope="col">Patient</th>
                     <th scope="col">vaccine</th>
                 </tr>
             </thead>
             <tbody>
                 @if(count($prescriptions) > 0)
-                        @foreach ($prescriptions as $prescription)
+                        @foreach ($prescriptions as $index=> $prescription)
                          
                                     <tr>
-                                        <td>{{$prescription->id}}</td>
-                                        <td>{{$prescription->center_id}}</td>
-                                        <td>{{$prescription->patient_id}}</td>
-                                        <td>{{$prescription->vaccine}}</td>
+                                        <td>{{$index+1}}</td>
+                                        <td>{{$centers[$index]}}</td>
+                                        <td>{{$patients[$index]}}</td>
+                                        <td>{{$vaccines[$index]}}</td>
                                     <tr>
                            
 

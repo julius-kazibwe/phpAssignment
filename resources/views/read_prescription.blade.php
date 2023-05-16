@@ -14,28 +14,28 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Center-ID</th>
-                    <th scope="col">Patient-ID</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Vaccination Center</th>
+                    <th scope="col">Patient</th>
                     <th scope="col">Vaccine</th>
                 </tr>
             </thead>
             <tbody>
                 @if(count($prescription) > 0)
-                        @foreach ($prescription as $p)
+                        @foreach ($prescription as $index => $p)
                          
                                     <tr>
-                                        <td>{{$p->id}}</td>
-                                        <td>{{$p->center_id}}</td>
-                                        <td>{{$p->patient_id}}</td>
-                                        <td>{{$p->vaccine}}</td>
+                                        <td>{{$index+1}}</td>
+                                        <td>{{$centers[$index]}}</td>
+                                        <td>{{$currentPatient->fullname}}</td>
+                                        <td>{{$vaccines[$index]}}</td>
                                     <tr>
                            
 
                         @endforeach
 
                 @else
-                <p><i>No Prescriptions available, please add new one</i></p>
+                <p><i>No Prescriptions available</i></p>
                 @endif
             </tbody>
         </table>

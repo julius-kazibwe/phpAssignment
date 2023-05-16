@@ -28,10 +28,9 @@
             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Patient ID</th>
-                <th scope="col">Center ID</th>
-                <th scope="col">Fullname</th>
+                <th scope="col">#</th>
+                <th scope="col">Center</th>
+                <th scope="col">Patient</th>
                 <th scope="col">NIN No</th>
                 <th scope="col">Date</th>
                 <th scope="col">Vaccine Taken</th>
@@ -41,19 +40,18 @@
 
             <tbody>
                          @if (count($treatment_records)>0)
-                         @foreach ($treatment_records as $treatment_record)
+                         
+                         @foreach ($treatment_records as $index => $treatment_record)
                              
                                        
                                  
               <tr class="table-active">
-              <td>{{$treatment_record->record_id}}</td>
-              
-              <td>{{$treatment_record->patient_id}}</td>
-              <td>{{$treatment_record->center_id}}</td>
-              <td>{{$treatment_record->fullname}}</td>
-              <td>{{$treatment_record->nin}}</td>
+              <td>{{$index+1}}</td>
+              <td>{{$center_names[$index]}}</td>
+              <td>{{$patients[$index]}}</td>
+              <td>{{$nin[$index]}}</td>
               <td>{{$treatment_record->date}}</td>
-              <td>{{$treatment_record->vaccine}}</td>
+              <td>{{$vaccines[$index]}}</td>
                 <td>
                   <a href='{{ url("/read_treat/{$treatment_record->record_id}") }}' class="label label-primary"> Read </a>|
                   <a href='{{ url("/update_treat/{$treatment_record->record_id}") }}' class="label label-success"> Update </a>|

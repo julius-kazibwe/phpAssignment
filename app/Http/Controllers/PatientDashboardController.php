@@ -106,6 +106,7 @@ class PatientDashboardController extends Controller
         $curr_patient = Patient::findOrFail($id);
         $auth_user = User::where('email', $curr_patient->email)->first();
         
+        $auth_user->name= $request->fullname;
         $curr_patient->fullname = $request->fullname;
         $curr_patient->address1 = $request->address1;
         $curr_patient->address2 = $request->address2;

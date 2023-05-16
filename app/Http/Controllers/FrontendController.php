@@ -121,7 +121,7 @@ class FrontendController extends Controller
 
         $center_names = [];
     foreach ($centerIds as $center_id) {
-       // $doctor_id = $doctor->doctor_id;
+      
         $center_name = Center::where('center_id', $center_id)->value('center_name');
         $center_names[$center_id] = $center_name;
     }

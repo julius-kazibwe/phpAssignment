@@ -6,19 +6,42 @@
 <link rel="stylesheet" href={{ url('css/product/assets/css/style.css') }}>
 
 @section('content')
+
 <div class="container">
-    <div class="col-md-6">
-        <legend>Treatment Record</legend>
-        ID:<p>{{$treatment_record->record_id}}</p>
-        Patient ID:<p>{{$treatment_record->patient_id}}</p>
-        Center ID:<p>{{$treatment_record->center_id}}</p>
-        Full Name:<p>{{$treatment_record->fullname}}</p>
-        NIN No:<p>{{$treatment_record->nin}}</p>
-        Date:<p>{{$treatment_record->date}}</p>
-        Vaccine:<p>{{$treatment_record->vaccine}}</p>
+        <h1>Vaccination Record</h1>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Vaccination Record</th>
+                    <th scope="col">Vaccination Center</th>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Vaccine Taken</th>
+                    <th scope="col">Date</th>
 
-    </div>
-    <a href="{{ url('/patient') }}" class="btn btn-primary">Back</a>
+                </tr>
+            </thead>
+            <tbody>
+                @if(count($treatment_record) > 0)
+                        @foreach ($treatment_record as $index => $treat)
+                         
+                                    <tr>
+                                        <td>{{$index+1}}</td>
+                                        <td>{{$centers[$index]}}</td>
+                                        <td>{{$currentPatient->fullname}}</td>
+                                        <td>{{$vaccines[$index]}}</td>
+                                        <td>{{$treat->date}}</td>
+                                    <tr>
+                           
+
+                        @endforeach
+
+                @else
+                <p><i>No Vaccination records available.</i></p>
+                @endif
+            </tbody>
+        </table>
+    </div>    
+
+    <a href="{{ '/patient' }}" class="btn btn-primary">Back</a>
 </div>
-
 @endsection

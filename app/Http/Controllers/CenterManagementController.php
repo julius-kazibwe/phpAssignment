@@ -16,17 +16,17 @@ class CenterManagementController extends Controller
      */
     public function index()
     {
-        $disabled ='';
+        
         $centers = Center::all();
         $center_vaccines=[];
-        foreach ($centers as $center) {
+        foreach ($centers as $index=>$center) {
             $center_id = $center->center_id;
             $centre = Center::where('center_id', $center_id)->first();
             $vaccine_name = Vaccine::where('vaccine_id', $centre->vaccine_id)->value('vaccine');
-            $center_vaccines[$center_id] = $vaccine_name;
+            $center_vaccines[$index] = $vaccine_name;
         }
         //returns all center in the centers table.  
-        return view('center.manage', compact('centers', 'disabled', 'center_vaccines'));
+        return view('center.manage', compact('centers', 'center_vaccines'));
     }
     
     /**
@@ -48,20 +48,24 @@ class CenterManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'center_name'=>'required',
+            'location' => 'required',
+            'vaccine_id' => 'required'
+        ]);
+
         $center = new Center();
         $center->center_name = $request->center_name;
         $center->location = $request->location;
         $center->vaccine_id = $request->vaccine_id;
         try{
             $center->saveOrFail();
-            return view('center.create',['success' => 'Entry added succesfully']);
-        }catch(\Exception $excpetion){
-            //try to categorize the error using the exception. 
-            return view('center.create',['error' => 'An error occurred!']);
+            return redirect('/center')->with('info','A new Center has been added successfully!');
+        }catch(Exception $excpetion){
+            return view('center.createCenter',['error' => 'An error occurred!']);
         }
        
-        //return view('main.about');
+       
     }
 
     /**
@@ -106,31 +110,7 @@ class CenterManagementController extends Controller
             ]
         );
 
-        //load telephone number 2 too.
-        if(isset($request->telephone1)) {
-            $contact = new DoctorContact();
-            $contact->doctor_id = $center->doctor_id;
-
-            //check whether the input number already exists in the table.            
-            if(! CenterContact::where('contact_number', '=', $request->telephone1)->limit(1)->get()->count() )
-            {
-                $contact->contact_number = $request->telephone1;
-                $contact->save();
-            }       
-                
-        }
-
-        if( isset($request->telephone2)){
-            $contact = new CenterContact();
-            $contact->doctor_id = $center->doctor_id;
-            $contact->contact_number = $request->telephone2;
-            $contact->save();
-        }     
-
-       // return view('center.edit', ['center' => $center, 'contact' => $contact]);   
-       return redirect()->action(
-        'CenterManagementController@edit', ['center' => $center->fresh()]
-    );        
+    
 
 }
 
@@ -150,6 +130,15 @@ class CenterManagementController extends Controller
         $list = Center::query()
             ->where("center_name", "LIKE", "%{$search_query}%")
                 ->orWhere("location", 'LIKE', "%{$search_query}%")->get();
-        return view('center.manage', ['centers'=> $list, 'disabled'=> 'disabled']);
+                $centers = $list;
+                $center_vaccines=[];
+            foreach ($centers as $index=>$center) {
+            $center_id = $center->center_id;
+            $centre = Center::where('center_id', $center_id)->first();
+            $vaccine_name = Vaccine::where('vaccine_id', $centre->vaccine_id)->value('vaccine');
+            $center_vaccines[$index] = $vaccine_name;
+        }
+        
+        return view('center.manage', compact('centers', 'center_vaccines'));
     }
 }

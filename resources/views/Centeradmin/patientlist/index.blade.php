@@ -47,14 +47,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($bookings as $booking)
+                            @forelse($bookings as $index=>$booking)
                             <tr>
                                 <th scope="row">{{$loop-> iteration}}</th>
                                 <td>{{$booking->date}}</td>
                                 <td>{{$booking->user->name}}</td>
                                 <td>{{$booking->user->email}}</td>
                                 <td>{{$booking->time}}</td>
-                                <td>{{$center_names[$booking->center_id]}}</td>
+                                <td>{{$center_names[$index]}}</td>
                                 <td>
                                     @if($booking->status==0)
                                     <a href="{{route('update.status',[$booking->id])}}"><button class="btn btn-primary"> Pending</button></a>

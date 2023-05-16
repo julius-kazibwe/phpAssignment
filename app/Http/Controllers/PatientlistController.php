@@ -19,10 +19,9 @@ class PatientlistController extends Controller
    }
         
         $center_names = [];
-        foreach ($centerIds as $center_id) {
-           // $center_id = $center->center_id;
+        foreach ($centerIds as $index=>$center_id) {
             $center_name = Center::where('center_id', $center_id)->value('center_name');
-            $center_names[$center_id] = $center_name;
+            $center_names[$index] = $center_name;
         }
             return view('Centeradmin.patientlist.index', compact('bookings', 'center_names', 'centerIds'));
         }
@@ -34,13 +33,13 @@ class PatientlistController extends Controller
    }
         
         $center_names = [];
-        foreach ($centerIds as $center_id) {
-           // $center_id = $center->center_id;
-            $center_name = Center::where('doctor_id', $center_id)->value('center_name');
-            $center_names[$center_id] = $center_name;
+        foreach ($centerIds as $index=>$center_id) {
+           
+            $center_name = Center::where('center_id', $center_id)->value('center_name');
+            $center_names[$index] = $center_name;
         }
         
-        return view('Centeradmin.patientlist.index', compact('bookings', 'center_names', 'centerIds'));
+        return view('Centeradmin.patientlist.index', compact('bookings', 'center_names'));
     }
 
     public function toggleStatus($id)
@@ -59,13 +58,13 @@ class PatientlistController extends Controller
    }
         
         $center_names = [];
-        foreach ($centerIds as $center_id) {
-           // $center_id = $center->center_id;
+        foreach ($centerIds as $index=> $center_id) {
+           
             $center_name = Center::where('center_id', $center_id)->value('center_name');
-            $center_names[$center_id] = $center_name;
+            $center_names[$index] = $center_name;
         }
         
-        return view('Centeradmin.patientlist.index', compact('bookings', 'center_names', 'centerIds'));
+        return view('Centeradmin.patientlist.index', compact('bookings', 'center_names'));
         
         
     }

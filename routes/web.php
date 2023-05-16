@@ -72,8 +72,8 @@ Route::get('/create_prescription', function(){
 
 Route::post('/insert_prescription', 'App\Http\Controllers\PrescriptionController@add2');
 
-Route::get('/update_prescription/{id}', 'App\Http\Controllers\PrescriptionController@edit2');
-Route::put('/edit_prescription/{id}', 'App\Http\Controllers\PrescriptionController@update2');
+Route::get('/update_prescription/{id}', 'App\Http\Controllers\PrescriptionController@update2');
+Route::put('/edit_prescription/{id}', 'App\Http\Controllers\PrescriptionController@edit2')->name('edit2');
 Route::get('/read_prescription', 'App\Http\Controllers\PrescriptionController@show');
 
 Route::get('/read_prescription/{id}', 'App\Http\Controllers\PrescriptionController@show2');
@@ -97,7 +97,7 @@ Route::get('/create_treat', function(){
 Route::post('/insert_treatment', 'App\Http\Controllers\TreatmentController@add1');
 
 Route::get('/update_treat/{id}', 'App\Http\Controllers\TreatmentController@update1');
-Route::get('/edit_treat/{id}', 'App\Http\Controllers\TreatmentController@edit1');
+Route::get('/edit_treat/{record_id}', 'App\Http\Controllers\TreatmentController@edit1')->name('edit1');
 
 Route::get('/read_treat/{id}', 'App\Http\Controllers\TreatmentController@show');
 Route::get('/read_treatment/{id}', 'App\Http\Controllers\TreatmentController@read');
@@ -125,7 +125,10 @@ Route::post('/appointment/update', 'App\Http\Controllers\AppointmentController@u
 
 //center
 Route::get('/center', 'App\Http\Controllers\CenterManagementController@index');
-  
+Route::post('/centers/search', 'App\Http\Controllers\CenterManagementController@searchCenter');
+Route::view('/add/newCenter', 'center.createCenter');
+Route::post('/insert_center', 'App\Http\Controllers\CenterManagementController@store');
+
   
 //VaccineAppointment
   Route::get('/appointment', 'App\Http\Controllers\FrontendController@index');

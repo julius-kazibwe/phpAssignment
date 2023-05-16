@@ -8,14 +8,14 @@
 @section('content')
 <div class="container">
     <div class="col-md-6">
-        <legend>Treatment Record</legend>
-        ID:<p>{{$treatment_record->record_id}}</p>
-        Patient ID:<p>{{$treatment_record->patient_id}}</p>
-        Center ID:<p>{{$treatment_record->center_id}}</p>
-        Full Name:<p>{{$treatment_record->fullname}}</p>
-        NIN No:<p>{{$treatment_record->nin}}</p>
+   
+        <legend>Vaccination Record</legend>
+        Vaccination ID:<p>{{$treatment_record->record_id}}</p>
+        Patient :<p>{{$patient_name}}</p>
+        Center :<p>{{$center_name}}</p>
+        NIN No:<p>{{$nin}}</p>
         Date:<p>{{$treatment_record->date}}</p>
-        Vaccine:<p>{{$treatment_record->vaccine}}</p>
+        Vaccine:<p>{{$vaccine_name}}</p>
 
     </div>
     <a href="{{ url('/home_treat') }}" class="btn btn-primary">Back</a>

@@ -35,8 +35,8 @@
            </div>
 
            <div class="form-group">
-               <label>Prescription:</label>
-               <textarea class="form-control" id="Description" name="vaccine" rows="3"></textarea>
+               <label>Vaccine_ID:</label>
+               <input type="string" class="form-control" id="vaccine" name="vaccine" placeholder="Enter Vaccine_id">
            </div>
 
            <button type="submit" class="btn btn-primary">Submit</button>
@@ -47,9 +47,9 @@
        <button type="button" onclick="myFunction()" class="btn-btn-primary">Demo</button>
        <script>
          function myFunction(){
-         document.getElementById("did").value = "7";
-         document.getElementById("pid").value = "5";
-         document.getElementById("Description").value = "Needs concern";
+         document.getElementById("did").value = "1";
+         document.getElementById("pid").value = "1";
+         document.getElementById("vaccine").value = "1";
          }
 
        </script>

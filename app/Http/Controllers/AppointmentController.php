@@ -38,18 +38,18 @@ class AppointmentController extends Controller
     //$date = $request->input('date', date('Y-m-d'));
 
     $center_names = [];
-    foreach ($centers as $center) {
+    foreach ($centers as $index=> $center) {
         $center_id = $center->center_id;
         $center_name = Center::where('center_id', $center_id)->value('center_name');
-        $center_names[$center_id] = $center_name;
+        $center_names[$index] = $center_name;
     }
     $center_vaccines = [];
-    foreach ($centers as $center) {
+    foreach ($centers as $index=>$center) {
         
         $centre = Center::where('center_id', $center->center_id)->first();
         $vaccine_id = $centre->vaccine_id;
         $vaccine_name = Vaccine::where('vaccine_id', $vaccine_id)->value('vaccine');
-        $center_vaccines[$vaccine_id] = $vaccine_name;
+        $center_vaccines[$index] = $vaccine_name;
     }
 
     return view('Centeradmin.appointment.create', compact('centers', 'center_vaccines', 'center_names'));

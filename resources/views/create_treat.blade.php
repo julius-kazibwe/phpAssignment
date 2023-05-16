@@ -33,16 +33,6 @@
              <input type="string" class="form-control" id="pid" name="patient_id" placeholder="Enter Patient_id">
            </div>
             
-           <div class="form-group">
-             <label>Full Name</label>
-             <input type="string" class="form-control" id="fname" name="fullname" placeholder="Enter Full Name">
-           </div>
-
-           <div class="form-group">
-             <label>NIN NO</label>
-             <input type="string" class="form-control" id="nin" name="nin" placeholder="Enter NIN No">
-           </div>
-
             <div class="form-group">
             <label>DATE</label>
              <input type="date" id="a" class="form-control-file" name="date" value="" required>
@@ -50,7 +40,7 @@
 
            <div class="form-group">
             <label>Vaccine taken:</label>
-            <textarea class="form-control" id="vaccine" name="vaccine" rows="3"></textarea>
+            <input class="form-control" id="vaccine" name="vaccine" rows="3" placeholder="Enter vaccine_id">
            </div>
 
            <button type="submit" class="btn btn-primary">Submit</button>

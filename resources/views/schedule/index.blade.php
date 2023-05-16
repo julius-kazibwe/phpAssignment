@@ -26,6 +26,7 @@
                         <input type="time" class="form-control" name="end_time" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="{{ url('/center') }}" class="btn btn-primary">Back</a>
                 </form>
             </div>
             <div class="col-md-6">
